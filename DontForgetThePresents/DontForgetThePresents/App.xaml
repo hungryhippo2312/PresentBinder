@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Application x:Class="DontForgetThePresents.App" 
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+             StartupUri="Views\MainWindowView.xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:core="clr-namespace:DontForgetThePresents.Core"
+             mc:Ignorable="d">
+    <Application.Resources>
+        <core:ViewModelLocator x:Key="ViewModelLocator">
+            <core:ViewModelLocator.Resolver>
+                <core:ViewModelResolver/>
+            </core:ViewModelLocator.Resolver>
+        </core:ViewModelLocator>
+    </Application.Resources>
+</Application>

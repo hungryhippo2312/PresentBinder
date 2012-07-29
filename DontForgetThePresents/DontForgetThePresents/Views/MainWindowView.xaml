@@ -1,0 +1,28 @@
+﻿<Window x:Class="DontForgetThePresents.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:Views="clr-namespace:DontForgetThePresents.Views"
+        DataContext="{Binding [MainWindowViewModel], Source={StaticResource ViewModelLocator}}"
+        Title="MainWindow" Height="350" Width="525">
+
+    <ScrollViewer ScrollViewer.VerticalScrollBarVisibility="Visible">
+        <ItemsControl Margin="10"
+                      ItemsSource="{Binding PresentLists}">
+            <ItemsControl.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <WrapPanel />
+                </ItemsPanelTemplate>
+            </ItemsControl.ItemsPanel>
+            <ItemsControl.ItemTemplate>
+                <DataTemplate>
+                    <Views:PresentListView/>
+                </DataTemplate>
+            </ItemsControl.ItemTemplate>
+            <ItemsControl.ItemContainerStyle>
+                <Style>
+                    <Setter Property="FrameworkElement.Margin" Value="10" />
+                </Style>
+            </ItemsControl.ItemContainerStyle>
+        </ItemsControl>
+    </ScrollViewer>
+</Window>
