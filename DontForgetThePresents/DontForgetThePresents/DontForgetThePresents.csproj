@@ -88,8 +88,12 @@
     <Compile Include="Core\WindsorResolver.cs" />
     <Compile Include="Core\WindsorRepositoriesInstaller.cs" />
     <Compile Include="Core\WindsorViewsInstaller.cs" />
+    <Compile Include="ViewModel\PresentViewModel.cs" />
     <Compile Include="Views\PresentListView.xaml.cs">
       <DependentUpon>PresentListView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\PresentView.xaml.cs">
+      <DependentUpon>PresentView.xaml</DependentUpon>
     </Compile>
     <Page Include="Views\MainWindowView.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -106,6 +110,10 @@
     <Page Include="Views\PresentListView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\PresentView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
   </ItemGroup>
   <ItemGroup>
