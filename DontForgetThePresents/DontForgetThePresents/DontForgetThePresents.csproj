@@ -82,7 +82,6 @@
     <Compile Include="Models\Present.cs" />
     <Compile Include="Core\IPresentViewModelFactory.cs" />
     <Compile Include="Core\IWindsorResolver.cs" />
-    <Compile Include="Models\Test.cs" />
     <Compile Include="ViewModel\MainWindowViewModel.cs" />
     <Compile Include="ViewModel\PresentListViewModel.cs" />
     <Compile Include="Core\ViewModelLocator.cs" />
