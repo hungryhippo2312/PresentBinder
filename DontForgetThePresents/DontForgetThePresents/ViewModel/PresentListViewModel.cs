@@ -2,6 +2,7 @@
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
 using System.Windows;
+using GalaSoft.MvvmLight.Messaging;
 
 namespace DontForgetThePresents.ViewModel
 {
@@ -36,7 +37,8 @@ namespace DontForgetThePresents.ViewModel
 
         private void ShowPresents()
         {
-            MessageBox.Show("Would show presents");
+            //need to show a view model containing all of the presents in this list.
+            Messenger.Default.Send<ViewModelBase>(this);
         }
     }
 }

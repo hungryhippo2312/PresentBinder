@@ -4,34 +4,40 @@ using DontForgetThePresents.Core;
 using DontForgetThePresents.DataAccess;
 using DontForgetThePresents.Models;
 using GalaSoft.MvvmLight;
+using GalaSoft.MvvmLight.Messaging;
 
 namespace DontForgetThePresents.ViewModel
 {
     public class MainWindowViewModel : ViewModelBase
     {
-        private readonly IPresentListRepository _repository;
-        private readonly IPresentViewModelFactory _presentListViewModelFactory;
+        private ViewModelBase _currentViewModel;
 
-        public MainWindowViewModel(IPresentListRepository repository, IPresentViewModelFactory presentListViewModelFactory)
+        public MainWindowViewModel(IAllListsViewModelFactory allListsViewModelFactory)
         {
-            _repository = repository;
-            _presentListViewModelFactory = presentListViewModelFactory;
+            CurrentViewModel = allListsViewModelFactory.Create();
+
+            Messenger.Default.Register<ViewModelBase>(this, ChangeCurrentViewModel);
         }
 
-        public ObservableCollection<PresentListViewModel> PresentLists
+        public ViewModelBase CurrentViewModel
         {
             get
             {
-                var presentListVms = new ObservableCollection<PresentListViewModel>();
-                IEnumerable<PresentList> presentLists = _repository.GetAllLists();
-                foreach (PresentList pl in presentLists)
-                {
-                    var vm = _presentListViewModelFactory.Create(pl);
-                    presentListVms.Add(vm);
-                }
-
-                return presentListVms;
+                return _currentViewModel;
             }
+            set
+            {
+                if (_currentViewModel != value)
+                {
+                    _currentViewModel = value;
+                    RaisePropertyChanged("CurrentViewModel");
+                }
+            }
+        }
+
+        private void ChangeCurrentViewModel(ViewModelBase viewModel)
+        {
+            CurrentViewModel = viewModel;
         }
     }
 }

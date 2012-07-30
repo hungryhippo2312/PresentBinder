@@ -6,6 +6,8 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:core="clr-namespace:DontForgetThePresents.Core"
+             xmlns:vm="clr-namespace:DontForgetThePresents.ViewModel"
+             xmlns:views="clr-namespace:DontForgetThePresents.Views"
              mc:Ignorable="d">
     <Application.Resources>
         <core:ViewModelLocator x:Key="ViewModelLocator">
@@ -13,5 +15,13 @@
                 <core:ViewModelResolver/>
             </core:ViewModelLocator.Resolver>
         </core:ViewModelLocator>
+        
+        <DataTemplate DataType="{x:Type vm:AllListsViewModel}">
+            <views:AllListsView />
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type vm:PresentListViewModel}">
+            <views:PresentListView />
+        </DataTemplate>
+        
     </Application.Resources>
 </Application>

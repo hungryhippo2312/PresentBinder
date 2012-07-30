@@ -4,25 +4,13 @@
         xmlns:Views="clr-namespace:DontForgetThePresents.Views"
         DataContext="{Binding [MainWindowViewModel], Source={StaticResource ViewModelLocator}}"
         Title="MainWindow" Height="350" Width="525">
-
-    <ScrollViewer ScrollViewer.VerticalScrollBarVisibility="Visible">
-        <ItemsControl Margin="10"
-                      ItemsSource="{Binding PresentLists}">
-            <ItemsControl.ItemsPanel>
-                <ItemsPanelTemplate>
-                    <WrapPanel />
-                </ItemsPanelTemplate>
-            </ItemsControl.ItemsPanel>
-            <ItemsControl.ItemTemplate>
-                <DataTemplate>
-                    <Views:PresentListView/>
-                </DataTemplate>
-            </ItemsControl.ItemTemplate>
-            <ItemsControl.ItemContainerStyle>
-                <Style>
-                    <Setter Property="FrameworkElement.Margin" Value="10" />
-                </Style>
-            </ItemsControl.ItemContainerStyle>
-        </ItemsControl>
-    </ScrollViewer>
+    
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        
+        <ContentControl Content="{Binding CurrentViewModel}" />
+    </Grid>
+    
 </Window>

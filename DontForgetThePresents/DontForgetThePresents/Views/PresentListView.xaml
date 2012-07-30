@@ -9,7 +9,7 @@
              d:DesignHeight="80" d:DesignWidth="150">
     <Grid Width="150" Height="80">
         <Border BorderBrush="Chocolate" BorderThickness="3" CornerRadius="10"/>
-        <TextBlock Margin="10, 10, 10, 10" 
+        <!--<TextBlock Margin="10, 10, 10, 10" 
                    Text="{Binding ListName}"
                    FontSize="16"
                    HorizontalAlignment="Center"
@@ -20,6 +20,28 @@
                     <cmd:EventToCommand Command="{Binding ShowPresentsCommand}" />
                 </i:EventTrigger>
             </i:Interaction.Triggers>
-        </TextBlock>
+        </TextBlock>-->
+
+        <!--<Label 
+            Content="{Binding ListName}"
+            Margin="10, 10, 10, 10"
+            FontSize="16"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Center">
+            <Label.Resources>
+                <Style TargetType="TextBlock">
+                    <Setter Property="TextWrapping" Value="Wrap" />
+                </Style> 
+            </Label.Resources>
+        </Label>-->
+        
+        <Button
+            Command="{Binding ShowPresentsCommand}">
+            <TextBlock Text="{Binding ListName}"
+                       TextWrapping="Wrap" 
+                       FontSize="20"
+                       HorizontalAlignment="Center"/>
+        </Button>
+
     </Grid>
 </UserControl>

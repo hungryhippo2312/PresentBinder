@@ -74,6 +74,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Core\IAllListsViewModelFactory.cs" />
     <Compile Include="DataAccess\IPresentListRepository.cs" />
     <Compile Include="DataAccess\IPresentRepository.cs" />
     <Compile Include="DataAccess\MockListRepository.cs" />
@@ -82,6 +83,7 @@
     <Compile Include="Models\Present.cs" />
     <Compile Include="Core\IPresentViewModelFactory.cs" />
     <Compile Include="Core\IWindsorResolver.cs" />
+    <Compile Include="ViewModel\AllListsViewModel.cs" />
     <Compile Include="ViewModel\MainWindowViewModel.cs" />
     <Compile Include="ViewModel\PresentListViewModel.cs" />
     <Compile Include="Core\ViewModelLocator.cs" />
@@ -89,12 +91,19 @@
     <Compile Include="Core\WindsorRepositoriesInstaller.cs" />
     <Compile Include="Core\WindsorViewsInstaller.cs" />
     <Compile Include="ViewModel\PresentViewModel.cs" />
+    <Compile Include="Views\AllListsView.xaml.cs">
+      <DependentUpon>AllListsView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\PresentListView.xaml.cs">
       <DependentUpon>PresentListView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\PresentView.xaml.cs">
       <DependentUpon>PresentView.xaml</DependentUpon>
     </Compile>
+    <Page Include="Views\AllListsView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\MainWindowView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
