@@ -17,9 +17,9 @@ namespace DontForgetThePresents.Views
     /// <summary>
     /// Interaction logic for PresentListView.xaml
     /// </summary>
-    public partial class PresentListOverviewView : UserControl
+    public partial class PresentListView : UserControl
     {
-        public PresentListOverviewView()
+        public PresentListView()
         {
             InitializeComponent();
         }

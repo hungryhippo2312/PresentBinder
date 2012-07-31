@@ -13,12 +13,12 @@ namespace DontForgetThePresents.ViewModel
     public class AllListsViewModel : ViewModelBase
     {
         private readonly IPresentListRepository _repository;
-        private readonly IPresentViewModelFactory _presentListViewModelFactory;
+        private readonly IPresentListOverviewViewModelFactory _presentListOverviewViewModelFactory;
 
-        public AllListsViewModel(IPresentListRepository repository, IPresentViewModelFactory presentListViewModelFactory)
+        public AllListsViewModel(IPresentListRepository repository, IPresentListOverviewViewModelFactory presentListViewModelFactory)
         {
             _repository = repository;
-            _presentListViewModelFactory = presentListViewModelFactory;
+            _presentListOverviewViewModelFactory = presentListViewModelFactory;
         }
 
         public ObservableCollection<PresentListOverviewViewModel> PresentLists
@@ -29,7 +29,7 @@ namespace DontForgetThePresents.ViewModel
                 IEnumerable<PresentList> presentLists = _repository.GetAllLists();
                 foreach (PresentList pl in presentLists)
                 {
-                    var vm = _presentListViewModelFactory.Create(pl);
+                    var vm = _presentListOverviewViewModelFactory.Create(pl);
                     presentListVms.Add(vm);
                 }
 

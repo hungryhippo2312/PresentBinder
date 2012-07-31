@@ -3,7 +3,7 @@ using DontForgetThePresents.ViewModel;
 
 namespace DontForgetThePresents.Core
 {
-    public interface IPresentViewModelFactory
+    public interface IPresentListOverviewViewModelFactory
     {
         PresentListOverviewViewModel Create(PresentList presentList);
     }

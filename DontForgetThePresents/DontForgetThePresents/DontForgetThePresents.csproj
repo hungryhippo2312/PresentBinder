@@ -75,13 +75,14 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Core\IAllListsViewModelFactory.cs" />
+    <Compile Include="Core\IPresentListViewModelFactory.cs" />
     <Compile Include="DataAccess\IPresentListRepository.cs" />
     <Compile Include="DataAccess\IPresentRepository.cs" />
     <Compile Include="DataAccess\MockListRepository.cs" />
     <Compile Include="DataAccess\MockPresentRepository.cs" />
     <Compile Include="Models\PresentList.cs" />
     <Compile Include="Models\Present.cs" />
-    <Compile Include="Core\IPresentViewModelFactory.cs" />
+    <Compile Include="Core\IPresentListOverviewViewModelFactory.cs" />
     <Compile Include="Core\IWindsorResolver.cs" />
     <Compile Include="ViewModel\AllListsViewModel.cs" />
     <Compile Include="ViewModel\MainWindowViewModel.cs" />
@@ -90,11 +91,15 @@
     <Compile Include="Core\WindsorResolver.cs" />
     <Compile Include="Core\WindsorRepositoriesInstaller.cs" />
     <Compile Include="Core\WindsorViewsInstaller.cs" />
+    <Compile Include="ViewModel\PresentListViewModel.cs" />
     <Compile Include="Views\AllListsView.xaml.cs">
       <DependentUpon>AllListsView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\PresentListOverviewView.xaml.cs">
       <DependentUpon>PresentListOverviewView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\PresentListView.xaml.cs">
+      <DependentUpon>PresentListView.xaml</DependentUpon>
     </Compile>
     <Page Include="Views\AllListsView.xaml">
       <SubType>Designer</SubType>
@@ -113,6 +118,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="Views\PresentListOverviewView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\PresentListView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

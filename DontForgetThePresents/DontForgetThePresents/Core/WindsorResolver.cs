@@ -37,11 +37,15 @@ namespace DontForgetThePresents.Core
 
             _container.Register(
                 //Component.For<PresentList>(),
-                Component.For<IPresentViewModelFactory>()
+                Component.For<IPresentListOverviewViewModelFactory>()
                 .AsFactory());
 
             _container.Register(
                 Component.For<IAllListsViewModelFactory>()
+                .AsFactory());
+
+            _container.Register(
+                Component.For<IPresentListViewModelFactory>()
                 .AsFactory());
         }
     }

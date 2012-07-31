@@ -3,16 +3,19 @@ using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
 using System.Windows;
 using GalaSoft.MvvmLight.Messaging;
+using DontForgetThePresents.Core;
 
 namespace DontForgetThePresents.ViewModel
 {
     public class PresentListOverviewViewModel : ViewModelBase
     {
         private PresentList _presentList;
+        private IPresentListViewModelFactory _presentListViewModelFactory;
 
-        public PresentListOverviewViewModel(PresentList presentList)
+        public PresentListOverviewViewModel(PresentList presentList, IPresentListViewModelFactory presentListViewModelFactory)
         {
             _presentList = presentList;
+            _presentListViewModelFactory = presentListViewModelFactory;
 
             ShowPresentsCommand = new RelayCommand(ShowPresents);
         }
@@ -37,8 +40,8 @@ namespace DontForgetThePresents.ViewModel
 
         private void ShowPresents()
         {
-            //need to show a view model containing all of the presents in this list.
-            Messenger.Default.Send<ViewModelBase>(this);
+            PresentListViewModel vm = _presentListViewModelFactory.Create(_presentList);
+            Messenger.Default.Send<ViewModelBase>(vm);
         }
     }
 }
