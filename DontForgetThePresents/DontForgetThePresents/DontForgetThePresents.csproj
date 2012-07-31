@@ -85,20 +85,16 @@
     <Compile Include="Core\IWindsorResolver.cs" />
     <Compile Include="ViewModel\AllListsViewModel.cs" />
     <Compile Include="ViewModel\MainWindowViewModel.cs" />
-    <Compile Include="ViewModel\PresentListViewModel.cs" />
+    <Compile Include="ViewModel\PresentListOverviewViewModel.cs" />
     <Compile Include="Core\ViewModelLocator.cs" />
     <Compile Include="Core\WindsorResolver.cs" />
     <Compile Include="Core\WindsorRepositoriesInstaller.cs" />
     <Compile Include="Core\WindsorViewsInstaller.cs" />
-    <Compile Include="ViewModel\PresentViewModel.cs" />
     <Compile Include="Views\AllListsView.xaml.cs">
       <DependentUpon>AllListsView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\PresentListView.xaml.cs">
-      <DependentUpon>PresentListView.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Views\PresentView.xaml.cs">
-      <DependentUpon>PresentView.xaml</DependentUpon>
+    <Compile Include="Views\PresentListOverviewView.xaml.cs">
+      <DependentUpon>PresentListOverviewView.xaml</DependentUpon>
     </Compile>
     <Page Include="Views\AllListsView.xaml">
       <SubType>Designer</SubType>
@@ -116,13 +112,9 @@
       <DependentUpon>MainWindowView.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="Views\PresentListView.xaml">
+    <Page Include="Views\PresentListOverviewView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Views\PresentView.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
     </Page>
   </ItemGroup>
   <ItemGroup>

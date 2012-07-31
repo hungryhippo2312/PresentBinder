@@ -19,7 +19,7 @@
         <DataTemplate DataType="{x:Type vm:AllListsViewModel}">
             <views:AllListsView />
         </DataTemplate>
-        <DataTemplate DataType="{x:Type vm:PresentListViewModel}">
+        <DataTemplate DataType="{x:Type vm:PresentListOverviewViewModel}">
             <views:PresentListView />
         </DataTemplate>
         

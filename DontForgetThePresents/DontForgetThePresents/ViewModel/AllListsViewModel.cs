@@ -21,11 +21,11 @@ namespace DontForgetThePresents.ViewModel
             _presentListViewModelFactory = presentListViewModelFactory;
         }
 
-        public ObservableCollection<PresentListViewModel> PresentLists
+        public ObservableCollection<PresentListOverviewViewModel> PresentLists
         {
             get
             {
-                var presentListVms = new ObservableCollection<PresentListViewModel>();
+                var presentListVms = new ObservableCollection<PresentListOverviewViewModel>();
                 IEnumerable<PresentList> presentLists = _repository.GetAllLists();
                 foreach (PresentList pl in presentLists)
                 {

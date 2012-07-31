@@ -6,11 +6,11 @@ using GalaSoft.MvvmLight.Messaging;
 
 namespace DontForgetThePresents.ViewModel
 {
-    public class PresentListViewModel : ViewModelBase
+    public class PresentListOverviewViewModel : ViewModelBase
     {
         private PresentList _presentList;
 
-        public PresentListViewModel(PresentList presentList)
+        public PresentListOverviewViewModel(PresentList presentList)
         {
             _presentList = presentList;
 
