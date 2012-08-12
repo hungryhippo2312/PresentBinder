@@ -7,6 +7,7 @@ using DontForgetThePresents.Core;
 using System.Collections.ObjectModel;
 using DontForgetThePresents.Models;
 using GalaSoft.MvvmLight;
+using NHibernate;
 
 namespace DontForgetThePresents.ViewModel
 {

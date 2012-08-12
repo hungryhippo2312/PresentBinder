@@ -2,9 +2,9 @@
 {
     public class Present
     {
-        public int Id { get; set; }
-        public int ListId { get; set; }
-        public string Description { get; set; }
+        public virtual int Id { get; set; }
+        public virtual PresentList List { get; set; }
+        public virtual string Description { get; set; }
 
         public Present()
         {

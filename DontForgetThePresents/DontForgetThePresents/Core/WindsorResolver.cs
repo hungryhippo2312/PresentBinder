@@ -2,7 +2,6 @@
 using Castle.Facilities.TypedFactory;
 using Castle.MicroKernel.Registration;
 using Castle.Windsor;
-using DontForgetThePresents.Models;
 
 namespace DontForgetThePresents.Core
 {
@@ -30,13 +29,18 @@ namespace DontForgetThePresents.Core
         private void configureContainer()
         {
             _container = new WindsorContainer();
-            _container.Install(new WindsorViewsInstaller());
-            _container.Install(new WindsorRepositoriesInstaller());
+            //_container.Install(new WindsorViewsInstaller());
+            //_container.Install(new WindsorRepositoriesInstaller());
+
+            //_container.AddFacility<AutoTxFacility>();
+            //_container.Register(
+            //    Component.For<INHibernateInstaller>()
+            //    .ImplementedBy<FluentNHibernateInstaller>());
+            //_container.AddFacility<NHibernateFacility>();
 
             _container.AddFacility<TypedFactoryFacility>();
 
             _container.Register(
-                //Component.For<PresentList>(),
                 Component.For<IPresentListOverviewViewModelFactory>()
                 .AsFactory());
 
@@ -47,6 +51,17 @@ namespace DontForgetThePresents.Core
             _container.Register(
                 Component.For<IPresentListViewModelFactory>()
                 .AsFactory());
+
+            //NHibernateHelper nh = new NHibernateHelper();
+            //_container.Register(
+            //    Component.For<ISession>()
+            //    .LifestyleTransient()
+            //    .UsingFactoryMethod(() => nh.SessionFactory.OpenSession()));
+
+            _container.AddFacility<PersistenceFacility>();
+
+            _container.Install(new WindsorViewsInstaller());
+            _container.Install(new WindsorRepositoriesInstaller());
         }
     }
 }

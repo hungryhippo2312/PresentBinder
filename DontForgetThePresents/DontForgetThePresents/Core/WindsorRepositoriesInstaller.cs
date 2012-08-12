@@ -9,7 +9,8 @@ namespace DontForgetThePresents.Core
     {
         public void Install(IWindsorContainer container, IConfigurationStore store)
         {
-            container.Register(Component.For<IPresentListRepository>().ImplementedBy<MockListRepository>().LifestyleTransient());
+            //container.Register(Component.For<IPresentListRepository>().ImplementedBy<MockListRepository>().LifestyleTransient());
+            container.Register(Component.For<IPresentListRepository>().ImplementedBy<PresentListRepository>().LifestyleTransient());
             container.Register(Component.For<IPresentRepository>().ImplementedBy<MockPresentRepository>().LifestyleTransient());
         }
     }
