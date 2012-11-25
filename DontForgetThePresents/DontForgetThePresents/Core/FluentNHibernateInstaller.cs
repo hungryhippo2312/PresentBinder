@@ -4,10 +4,11 @@ using System.Linq;
 using System.Text;
 using Castle.Facilities.NHibernate;
 using FluentNHibernate.Cfg;
-using Castle.Services.Transaction;
+//using Castle.Transaction;
 using NHibernate;
 using FluentNHibernate.Cfg.Db;
 using DontForgetThePresents.Models.ClassMaps;
+using Castle.Transactions;
 
 namespace DontForgetThePresents.Core
 {

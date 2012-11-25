@@ -7,7 +7,7 @@ namespace DontForgetThePresents.Models
         public virtual string Name { get; set; }
         public virtual string Notes { get; set; }
 
-        public virtual List<Present> Presents { get; set; }
+        public virtual IList<Present> Presents { get; set; }
 
         public PresentList()
         {

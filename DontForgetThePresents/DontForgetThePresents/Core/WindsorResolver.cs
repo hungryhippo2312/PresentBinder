@@ -2,6 +2,8 @@
 using Castle.Facilities.TypedFactory;
 using Castle.MicroKernel.Registration;
 using Castle.Windsor;
+using Castle.Facilities.AutoTx;
+using Castle.Facilities.NHibernate;
 
 namespace DontForgetThePresents.Core
 {
@@ -32,11 +34,11 @@ namespace DontForgetThePresents.Core
             //_container.Install(new WindsorViewsInstaller());
             //_container.Install(new WindsorRepositoriesInstaller());
 
-            //_container.AddFacility<AutoTxFacility>();
-            //_container.Register(
-            //    Component.For<INHibernateInstaller>()
-            //    .ImplementedBy<FluentNHibernateInstaller>());
-            //_container.AddFacility<NHibernateFacility>();
+            _container.AddFacility<AutoTxFacility>();
+            _container.Register(
+                Component.For<INHibernateInstaller>()
+                .ImplementedBy<FluentNHibernateInstaller>());
+            _container.AddFacility<NHibernateFacility>();
 
             _container.AddFacility<TypedFactoryFacility>();
 
@@ -58,7 +60,7 @@ namespace DontForgetThePresents.Core
             //    .LifestyleTransient()
             //    .UsingFactoryMethod(() => nh.SessionFactory.OpenSession()));
 
-            _container.AddFacility<PersistenceFacility>();
+            //_container.AddFacility<PersistenceFacility>();
 
             _container.Install(new WindsorViewsInstaller());
             _container.Install(new WindsorRepositoriesInstaller());
