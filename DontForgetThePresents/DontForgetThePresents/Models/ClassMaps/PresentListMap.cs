@@ -14,8 +14,8 @@ namespace DontForgetThePresents.Models.ClassMaps
             Map(x => x.Name);
             Map(x => x.Notes)
                 .Nullable();
-            HasMany(x => x.Presents);
-                //.KeyColumn("ListId");
+            HasMany(x => x.Presents)
+                .KeyColumn("ListId");
         }
     }
 }

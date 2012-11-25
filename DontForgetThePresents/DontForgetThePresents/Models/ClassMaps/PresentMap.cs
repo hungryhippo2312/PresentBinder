@@ -12,8 +12,8 @@ namespace DontForgetThePresents.Models.ClassMaps
         {
             Id(x => x.Id);
             Map(x => x.Description);
-            References(x => x.List);
-                //.Column("ListId");
+            References(x => x.List)
+                .Column("ListId");
         }
     }
 }

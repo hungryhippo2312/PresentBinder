@@ -122,12 +122,10 @@
     <Compile Include="Core\FluentNHibernateInstaller.cs" />
     <Compile Include="Core\IAllListsViewModelFactory.cs" />
     <Compile Include="Core\IPresentListViewModelFactory.cs" />
-    <Compile Include="Core\PersistenceFacility.cs" />
     <Compile Include="DataAccess\IPresentListRepository.cs" />
     <Compile Include="DataAccess\IPresentRepository.cs" />
-    <Compile Include="DataAccess\MockListRepository.cs" />
-    <Compile Include="DataAccess\MockPresentRepository.cs" />
     <Compile Include="DataAccess\PresentListRepository.cs" />
+    <Compile Include="DataAccess\PresentRepository.cs" />
     <Compile Include="Models\ClassMaps\PresentListMap.cs" />
     <Compile Include="Models\ClassMaps\PresentMap.cs" />
     <Compile Include="Models\PresentList.cs" />

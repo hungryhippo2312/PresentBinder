@@ -19,7 +19,9 @@ namespace DontForgetThePresents.DataAccess
         {
             using (ISession session = _sessionManager.OpenSession())
             {
-                return session.CreateCriteria<PresentList>().List<PresentList>();
+                return session.QueryOver<PresentList>()
+                    .Fetch(pl => pl.Presents)
+                    .Eager.List<PresentList>();
             }
         }
     }

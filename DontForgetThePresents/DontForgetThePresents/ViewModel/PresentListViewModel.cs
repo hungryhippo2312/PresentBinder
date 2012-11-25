@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using GalaSoft.MvvmLight;
 using DontForgetThePresents.Models;
+using DontForgetThePresents.DataAccess;
 
 namespace DontForgetThePresents.ViewModel
 {
@@ -45,6 +46,14 @@ namespace DontForgetThePresents.ViewModel
                     _presentList.Notes = value;
                     RaisePropertyChanged("Notes");
                 }
+            }
+        }
+
+        public int NumberOfPresents
+        {
+            get
+            {
+                return _presentList.Presents.Count;
             }
         }
     }
