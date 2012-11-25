@@ -32,13 +32,14 @@ namespace DontForgetThePresents.Core
         {
             _container = new WindsorContainer();
 
+            _container.Install(new WindsorViewsInstaller());
+            _container.Install(new WindsorRepositoriesInstaller());
+
             _container.AddFacility<AutoTxFacility>();
             _container.Register(
                 Component.For<INHibernateInstaller>()
                 .ImplementedBy<FluentNHibernateInstaller>());
             _container.AddFacility<NHibernateFacility>();
-
-            //_container.AddFacility<TypedFactoryFacility>();
 
             _container.Register(
                 Component.For<IPresentListOverviewViewModelFactory>()
@@ -51,9 +52,6 @@ namespace DontForgetThePresents.Core
             _container.Register(
                 Component.For<IPresentListViewModelFactory>()
                 .AsFactory());
-
-            _container.Install(new WindsorViewsInstaller());
-            _container.Install(new WindsorRepositoriesInstaller());
         }
     }
 }

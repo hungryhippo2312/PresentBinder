@@ -2,22 +2,25 @@
 using DontForgetThePresents.Models;
 using NHibernate;
 using Castle.Transactions;
+using Castle.Facilities.NHibernate;
 
 namespace DontForgetThePresents.DataAccess
 {
     public class PresentListRepository : IPresentListRepository
     {
-        private ISession _session;
+        private ISessionManager _sessionManager;
 
-        public PresentListRepository(ISession session)
+        public PresentListRepository(ISessionManager sessionManager)
         {
-            _session = session;
+            _sessionManager = sessionManager;
         }
 
-        [Transaction]
         public IEnumerable<PresentList> GetAllLists()
         {
-            return _session.CreateCriteria<PresentList>().List<PresentList>();
+            using (ISession session = _sessionManager.OpenSession())
+            {
+                return session.CreateCriteria<PresentList>().List<PresentList>();
+            }
         }
     }
 }
