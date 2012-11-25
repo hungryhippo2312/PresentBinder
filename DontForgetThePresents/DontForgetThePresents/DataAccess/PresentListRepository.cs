@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using DontForgetThePresents.Models;
 using NHibernate;
+using Castle.Transactions;
 
 namespace DontForgetThePresents.DataAccess
 {
@@ -13,6 +14,7 @@ namespace DontForgetThePresents.DataAccess
             _session = session;
         }
 
+        [Transaction]
         public IEnumerable<PresentList> GetAllLists()
         {
             return _session.CreateCriteria<PresentList>().List<PresentList>();

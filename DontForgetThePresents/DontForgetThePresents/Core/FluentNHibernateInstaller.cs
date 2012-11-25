@@ -1,14 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using Castle.Facilities.NHibernate;
-using FluentNHibernate.Cfg;
-//using Castle.Transaction;
-using NHibernate;
-using FluentNHibernate.Cfg.Db;
-using DontForgetThePresents.Models.ClassMaps;
+﻿using Castle.Facilities.NHibernate;
 using Castle.Transactions;
+using DontForgetThePresents.Models.ClassMaps;
+using FluentNHibernate.Cfg;
+using FluentNHibernate.Cfg.Db;
+using NHibernate;
 
 namespace DontForgetThePresents.Core
 {
