@@ -3,6 +3,8 @@ using DontForgetThePresents.Models;
 using NHibernate;
 using Castle.Transactions;
 using Castle.Facilities.NHibernate;
+using NHibernate.Linq;
+using System.Linq;
 
 namespace DontForgetThePresents.DataAccess
 {
@@ -19,10 +21,9 @@ namespace DontForgetThePresents.DataAccess
         {
             using (ISession session = _sessionManager.OpenSession())
             {
-                return session.QueryOver<PresentList>()
-                    .Fetch(pl => pl.Presents)
-                    .Eager
-                    .List<PresentList>();
+                return session.Query<PresentList>()
+                    .FetchMany(pl => pl.Presents)
+                    .ToList<PresentList>();
             }
         }
     }

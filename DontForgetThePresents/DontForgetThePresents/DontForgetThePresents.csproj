@@ -123,6 +123,7 @@
     <Compile Include="Core\IAllListsViewModelFactory.cs" />
     <Compile Include="Core\IPresentListViewModelFactory.cs" />
     <Compile Include="Core\IPresentSummaryViewModelFactory.cs" />
+    <Compile Include="Core\SqlStatementInterceptor.cs" />
     <Compile Include="DataAccess\IPresentListRepository.cs" />
     <Compile Include="DataAccess\IPresentRepository.cs" />
     <Compile Include="DataAccess\PresentListRepository.cs" />

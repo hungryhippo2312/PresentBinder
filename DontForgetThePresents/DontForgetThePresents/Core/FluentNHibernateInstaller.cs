@@ -29,7 +29,8 @@ namespace DontForgetThePresents.Core
 
         public Maybe<IInterceptor> Interceptor
         {
-            get { return Maybe.None<IInterceptor>(); }
+            //get { return Maybe.None<IInterceptor>(); }
+            get { return new SqlStatementInterceptor(); }
         }
 
         public bool IsDefault
