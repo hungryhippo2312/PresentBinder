@@ -7,10 +7,21 @@
     
     <Grid>
         <Grid.RowDefinitions>
+            <RowDefinition Height="30" />
             <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
         
-        <ContentControl Content="{Binding CurrentViewModel}" />
+        <Button 
+            Grid.Row="0"
+            Width="40"
+            HorizontalAlignment="Left"
+            Content="Back"
+            Command="{Binding BackCommand}"
+            />
+        <ContentControl 
+            Content="{Binding CurrentViewModel}" 
+            Grid.Row="1"
+            />
     </Grid>
     
 </Window>
