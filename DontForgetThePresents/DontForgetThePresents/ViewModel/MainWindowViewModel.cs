@@ -1,12 +1,8 @@
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using DontForgetThePresents.Core;
-using DontForgetThePresents.DataAccess;
-using DontForgetThePresents.Models;
 using GalaSoft.MvvmLight;
-using GalaSoft.MvvmLight.Messaging;
 using GalaSoft.MvvmLight.Command;
-using System;
+using GalaSoft.MvvmLight.Messaging;
 
 namespace DontForgetThePresents.ViewModel
 {
@@ -18,9 +14,7 @@ namespace DontForgetThePresents.ViewModel
         public MainWindowViewModel(IAllListsViewModelFactory allListsViewModelFactory)
         {
             BackCommand = new RelayCommand(() => GoBackOneViewModel(), () => CanGoBackOneViewModel());
-
             ChangeCurrentViewModel(allListsViewModelFactory.Create());
-
             Messenger.Default.Register<ViewModelBase>(this, ChangeCurrentViewModel);
         }
 

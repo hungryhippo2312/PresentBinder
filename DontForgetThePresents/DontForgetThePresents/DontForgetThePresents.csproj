@@ -122,6 +122,7 @@
     <Compile Include="Core\FluentNHibernateInstaller.cs" />
     <Compile Include="Core\IAllListsViewModelFactory.cs" />
     <Compile Include="Core\IPresentListViewModelFactory.cs" />
+    <Compile Include="Core\IPresentSummaryViewModelFactory.cs" />
     <Compile Include="DataAccess\IPresentListRepository.cs" />
     <Compile Include="DataAccess\IPresentRepository.cs" />
     <Compile Include="DataAccess\PresentListRepository.cs" />
@@ -140,6 +141,7 @@
     <Compile Include="Core\WindsorRepositoriesInstaller.cs" />
     <Compile Include="Core\WindsorViewsInstaller.cs" />
     <Compile Include="ViewModel\PresentListViewModel.cs" />
+    <Compile Include="ViewModel\PresentSummaryViewModel.cs" />
     <Compile Include="Views\AllListsView.xaml.cs">
       <DependentUpon>AllListsView.xaml</DependentUpon>
     </Compile>
@@ -148,6 +150,9 @@
     </Compile>
     <Compile Include="Views\PresentListView.xaml.cs">
       <DependentUpon>PresentListView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\PresentSummaryView.xaml.cs">
+      <DependentUpon>PresentSummaryView.xaml</DependentUpon>
     </Compile>
     <Page Include="Views\AllListsView.xaml">
       <SubType>Designer</SubType>
@@ -170,6 +175,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\PresentListView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\PresentSummaryView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

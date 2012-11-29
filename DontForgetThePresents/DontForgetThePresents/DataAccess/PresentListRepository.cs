@@ -21,7 +21,8 @@ namespace DontForgetThePresents.DataAccess
             {
                 return session.QueryOver<PresentList>()
                     .Fetch(pl => pl.Presents)
-                    .Eager.List<PresentList>();
+                    .Eager
+                    .List<PresentList>();
             }
         }
     }
