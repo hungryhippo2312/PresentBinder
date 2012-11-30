@@ -56,6 +56,10 @@ namespace DontForgetThePresents.Core
             _container.Register(
                 Component.For<IPresentSummaryViewModelFactory>()
                 .AsFactory());
+
+            _container.Register(
+                Component.For<IEditableListViewModelFactory>()
+                .AsFactory());
         }
     }
 }

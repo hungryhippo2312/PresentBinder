@@ -26,5 +26,13 @@ namespace DontForgetThePresents.DataAccess
                     .ToList<PresentList>();
             }
         }
+
+        public void Save(PresentList presentList)
+        {
+            using (ISession session = _sessionManager.OpenSession())
+            {
+                session.SaveOrUpdate(presentList);
+            }
+        }
     }
 }

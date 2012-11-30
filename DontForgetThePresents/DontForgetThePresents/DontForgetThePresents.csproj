@@ -121,6 +121,7 @@
     </ApplicationDefinition>
     <Compile Include="Core\FluentNHibernateInstaller.cs" />
     <Compile Include="Core\IAllListsViewModelFactory.cs" />
+    <Compile Include="Core\IEditableListViewModelFactory.cs" />
     <Compile Include="Core\IPresentListViewModelFactory.cs" />
     <Compile Include="Core\IPresentSummaryViewModelFactory.cs" />
     <Compile Include="Core\SqlStatementInterceptor.cs" />
@@ -135,6 +136,7 @@
     <Compile Include="Core\IPresentListOverviewViewModelFactory.cs" />
     <Compile Include="Core\IWindsorResolver.cs" />
     <Compile Include="ViewModel\AllListsViewModel.cs" />
+    <Compile Include="ViewModel\EditableListViewModel.cs" />
     <Compile Include="ViewModel\MainWindowViewModel.cs" />
     <Compile Include="ViewModel\PresentListOverviewViewModel.cs" />
     <Compile Include="Core\ViewModelLocator.cs" />
@@ -146,6 +148,9 @@
     <Compile Include="Views\AllListsView.xaml.cs">
       <DependentUpon>AllListsView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\EditableListView.xaml.cs">
+      <DependentUpon>EditableListView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\PresentListOverviewView.xaml.cs">
       <DependentUpon>PresentListOverviewView.xaml</DependentUpon>
     </Compile>
@@ -156,6 +161,10 @@
       <DependentUpon>PresentSummaryView.xaml</DependentUpon>
     </Compile>
     <Page Include="Views\AllListsView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\EditableListView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -8,5 +8,8 @@ namespace DontForgetThePresents.DataAccess
     {
         [Transaction]
         IEnumerable<PresentList> GetAllLists();
+
+        [Transaction]
+        void Save(PresentList presentList);
     }
 }
