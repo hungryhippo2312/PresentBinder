@@ -43,5 +43,10 @@
                 </ItemsControl.ItemTemplate>
             </ItemsControl>
         </ScrollViewer>
+        
+        <Button
+            Content="Edit list"
+            Command="{Binding EditCommand}"
+            />
     </StackPanel>
 </UserControl>

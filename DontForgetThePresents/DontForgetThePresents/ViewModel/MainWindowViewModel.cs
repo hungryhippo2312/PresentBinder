@@ -22,7 +22,9 @@ namespace DontForgetThePresents.ViewModel
         {
             //need to go back two view models because the current one is added to the list when it's displayed.
             ViewModelBase previousViewModel = _previousViewModels[_previousViewModels.Count - 2];
-            ChangeCurrentViewModel(previousViewModel);
+
+            _previousViewModels.RemoveAt(_previousViewModels.Count - 1);
+            CurrentViewModel = previousViewModel;
         }
 
         private bool CanGoBackOneViewModel()
@@ -52,13 +54,6 @@ namespace DontForgetThePresents.ViewModel
         private void ChangeCurrentViewModel(ViewModelBase viewModel)
         {
             CurrentViewModel = viewModel;
-
-            //"all lists" is the starting point so if we've made our way to it then we need to clear down the history and start again.
-            if (viewModel is AllListsViewModel)
-            {
-                _previousViewModels.Clear();
-            }
-            
             _previousViewModels.Add(viewModel);
         }
     }

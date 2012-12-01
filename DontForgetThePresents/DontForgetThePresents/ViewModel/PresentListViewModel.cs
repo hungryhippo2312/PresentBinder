@@ -6,6 +6,8 @@ using GalaSoft.MvvmLight;
 using DontForgetThePresents.Models;
 using DontForgetThePresents.DataAccess;
 using DontForgetThePresents.Core;
+using GalaSoft.MvvmLight.Command;
+using GalaSoft.MvvmLight.Messaging;
 
 namespace DontForgetThePresents.ViewModel
 {
@@ -13,11 +15,26 @@ namespace DontForgetThePresents.ViewModel
     {
         private PresentList _presentList;
         private IPresentSummaryViewModelFactory _presentSummaryViewModelFactory;
+        private IEditableListViewModelFactory _editableViewModelFactory;
+        private IPresentListRepository _listRepository;
 
-        public PresentListViewModel(PresentList presentList, IPresentSummaryViewModelFactory presentSummaryViewModelFactory)
+        public RelayCommand EditCommand { get; private set; }
+
+        public PresentListViewModel(PresentList presentList, IPresentSummaryViewModelFactory presentSummaryViewModelFactory,
+                                    IEditableListViewModelFactory editableViewModelFactory, IPresentListRepository listRepository)
         {
             _presentList = presentList;
             _presentSummaryViewModelFactory = presentSummaryViewModelFactory;
+            _editableViewModelFactory = editableViewModelFactory;
+            _listRepository = listRepository;
+
+            EditCommand = new RelayCommand(() => EditPresent());
+        }
+
+        private void EditPresent()
+        {
+            var vm = _editableViewModelFactory.Create(_listRepository, _presentList);
+            Messenger.Default.Send<ViewModelBase>(vm);
         }
 
         public string ListName
