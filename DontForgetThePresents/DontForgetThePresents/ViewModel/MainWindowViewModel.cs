@@ -3,6 +3,7 @@ using DontForgetThePresents.Core;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
 using GalaSoft.MvvmLight.Messaging;
+using DontForgetThePresents.Core.Messenger;
 
 namespace DontForgetThePresents.ViewModel
 {
@@ -13,12 +14,17 @@ namespace DontForgetThePresents.ViewModel
 
         public MainWindowViewModel(IAllListsViewModelFactory allListsViewModelFactory)
         {
-            BackCommand = new RelayCommand(() => GoBackOneViewModel(), () => CanGoBackOneViewModel());
-            ChangeCurrentViewModel(allListsViewModelFactory.Create());
-            Messenger.Default.Register<ViewModelBase>(this, ChangeCurrentViewModel);
+            BackCommand = new RelayCommand(() => GoBackOneViewModel(new GoToPreviousViewModel()), () => CanGoBackOneViewModel());
+            
+            var allListsVm = allListsViewModelFactory.Create();
+            var goToAllListsVm = new GoToViewModel(allListsVm);
+            ChangeCurrentViewModel(goToAllListsVm);
+
+            Messenger.Default.Register<GoToViewModel>(this, ChangeCurrentViewModel);
+            Messenger.Default.Register<GoToPreviousViewModel>(this, GoBackOneViewModel);
         }
 
-        private void GoBackOneViewModel()
+        private void GoBackOneViewModel(GoToPreviousViewModel back)
         {
             //need to go back two view models because the current one is added to the list when it's displayed.
             ViewModelBase previousViewModel = _previousViewModels[_previousViewModels.Count - 2];
@@ -51,8 +57,9 @@ namespace DontForgetThePresents.ViewModel
             }
         }
 
-        private void ChangeCurrentViewModel(ViewModelBase viewModel)
+        private void ChangeCurrentViewModel(GoToViewModel goToViewModel)
         {
+            var viewModel = goToViewModel.ViewModel;
             CurrentViewModel = viewModel;
             _previousViewModels.Add(viewModel);
         }

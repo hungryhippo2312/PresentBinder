@@ -10,6 +10,7 @@ using GalaSoft.MvvmLight;
 using NHibernate;
 using GalaSoft.MvvmLight.Command;
 using GalaSoft.MvvmLight.Messaging;
+using DontForgetThePresents.Core.Messenger;
 
 namespace DontForgetThePresents.ViewModel
 {
@@ -34,7 +35,8 @@ namespace DontForgetThePresents.ViewModel
         private void CreateNewList()
         {
             var vm = _editableListViewModelFactory.Create(_listRepository, new PresentList());
-            Messenger.Default.Send<ViewModelBase>(vm);
+            GoToViewModel goToViewModel = new GoToViewModel(vm);
+            Messenger.Default.Send<GoToViewModel>(goToViewModel);
         }
 
         public ObservableCollection<PresentListOverviewViewModel> PresentLists

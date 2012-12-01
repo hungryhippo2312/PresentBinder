@@ -8,6 +8,7 @@ using DontForgetThePresents.DataAccess;
 using DontForgetThePresents.Core;
 using GalaSoft.MvvmLight.Command;
 using GalaSoft.MvvmLight.Messaging;
+using DontForgetThePresents.Core.Messenger;
 
 namespace DontForgetThePresents.ViewModel
 {
@@ -34,7 +35,8 @@ namespace DontForgetThePresents.ViewModel
         private void EditPresent()
         {
             var vm = _editableViewModelFactory.Create(_listRepository, _presentList);
-            Messenger.Default.Send<ViewModelBase>(vm);
+            GoToViewModel goToViewModel = new GoToViewModel(vm);
+            Messenger.Default.Send<GoToViewModel>(goToViewModel);
         }
 
         public string ListName

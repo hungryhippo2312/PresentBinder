@@ -6,6 +6,8 @@ using GalaSoft.MvvmLight;
 using DontForgetThePresents.DataAccess;
 using DontForgetThePresents.Models;
 using GalaSoft.MvvmLight.Command;
+using GalaSoft.MvvmLight.Messaging;
+using DontForgetThePresents.Core.Messenger;
 
 namespace DontForgetThePresents.ViewModel
 {
@@ -27,6 +29,7 @@ namespace DontForgetThePresents.ViewModel
         private void SavePresent()
         {
             _listRepository.Save(_list);
+            Messenger.Default.Send<GoToPreviousViewModel>(new GoToPreviousViewModel());
         }
 
         private bool CanSavePresent()

@@ -4,6 +4,7 @@ using GalaSoft.MvvmLight.Command;
 using System.Windows;
 using GalaSoft.MvvmLight.Messaging;
 using DontForgetThePresents.Core;
+using DontForgetThePresents.Core.Messenger;
 
 namespace DontForgetThePresents.ViewModel
 {
@@ -41,7 +42,8 @@ namespace DontForgetThePresents.ViewModel
         private void ShowPresents()
         {
             PresentListViewModel vm = _presentListViewModelFactory.Create(_presentList);
-            Messenger.Default.Send<ViewModelBase>(vm);
+            var goToViewModel = new GoToViewModel(vm);
+            Messenger.Default.Send<GoToViewModel>(goToViewModel);
         }
     }
 }
