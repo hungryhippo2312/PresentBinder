@@ -1,16 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using DontForgetThePresents.DataAccess;
-using DontForgetThePresents.Core;
+﻿using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using DontForgetThePresents.Core;
+using DontForgetThePresents.Core.Messenger;
+using DontForgetThePresents.DataAccess;
 using DontForgetThePresents.Models;
 using GalaSoft.MvvmLight;
-using NHibernate;
 using GalaSoft.MvvmLight.Command;
 using GalaSoft.MvvmLight.Messaging;
-using DontForgetThePresents.Core.Messenger;
 
 namespace DontForgetThePresents.ViewModel
 {
@@ -50,7 +46,6 @@ namespace DontForgetThePresents.ViewModel
                     var vm = _presentListOverviewViewModelFactory.Create(pl);
                     presentListVms.Add(vm);
                 }
-
                 return presentListVms;
             }
         }

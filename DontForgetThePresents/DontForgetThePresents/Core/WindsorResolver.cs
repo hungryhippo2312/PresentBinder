@@ -38,7 +38,8 @@ namespace DontForgetThePresents.Core
             _container.AddFacility<AutoTxFacility>();
             _container.Register(
                 Component.For<INHibernateInstaller>()
-                .ImplementedBy<FluentNHibernateInstaller>());
+                .ImplementedBy<FluentNHibernateInstaller>()
+                .LifestylePerThread());
             _container.AddFacility<NHibernateFacility>();
 
             _container.Register(

@@ -30,8 +30,10 @@ namespace DontForgetThePresents.DataAccess
         public void Save(PresentList presentList)
         {
             using (ISession session = _sessionManager.OpenSession())
+            using (session.BeginTransaction())
             {
                 session.SaveOrUpdate(presentList);
+                session.Transaction.Commit();
             }
         }
     }
