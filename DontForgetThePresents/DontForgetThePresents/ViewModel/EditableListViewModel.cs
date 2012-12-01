@@ -16,10 +16,10 @@ namespace DontForgetThePresents.ViewModel
 
         public RelayCommand SaveCommand { get; private set; }
 
-        public EditableListViewModel(IPresentListRepository listRepository)
+        public EditableListViewModel(IPresentListRepository listRepository, PresentList list)
         {
             _listRepository = listRepository;
-            _list = new PresentList();
+            _list = list;
 
             SaveCommand = new RelayCommand(() => SavePresent(), () => CanSavePresent());
         }

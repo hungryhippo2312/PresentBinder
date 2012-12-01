@@ -33,7 +33,7 @@ namespace DontForgetThePresents.ViewModel
 
         private void CreateNewList()
         {
-            var vm = _editableListViewModelFactory.Create(_listRepository);
+            var vm = _editableListViewModelFactory.Create(_listRepository, new PresentList());
             Messenger.Default.Send<ViewModelBase>(vm);
         }
 
