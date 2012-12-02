@@ -1,10 +1,11 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using Castle.Facilities.NHibernate;
+using Castle.Transactions;
 using DontForgetThePresents.Models;
 using NHibernate;
-using Castle.Transactions;
-using Castle.Facilities.NHibernate;
 using NHibernate.Linq;
-using System.Linq;
 
 namespace DontForgetThePresents.DataAccess
 {
@@ -17,7 +18,8 @@ namespace DontForgetThePresents.DataAccess
             _sessionManager = sessionManager;
         }
 
-        public IEnumerable<PresentList> GetAllLists()
+        [Transaction]
+        public virtual IEnumerable<PresentList> GetAllLists()
         {
             using (ISession session = _sessionManager.OpenSession())
             {
@@ -27,13 +29,21 @@ namespace DontForgetThePresents.DataAccess
             }
         }
 
-        public void Save(PresentList presentList)
+        [Transaction]
+        public virtual bool Save(PresentList presentList)
         {
             using (ISession session = _sessionManager.OpenSession())
-            using (session.BeginTransaction())
             {
-                session.SaveOrUpdate(presentList);
-                session.Transaction.Commit();
+                try
+                {
+                    session.SaveOrUpdate(presentList);
+                    throw new Exception("Exception thrown when saving list.");
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine(e.Message);
+                    throw;
+                }
             }
         }
     }

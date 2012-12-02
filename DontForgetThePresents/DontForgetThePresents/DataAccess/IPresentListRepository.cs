@@ -6,10 +6,7 @@ namespace DontForgetThePresents.DataAccess
 {
     public interface IPresentListRepository
     {
-        [Transaction]
         IEnumerable<PresentList> GetAllLists();
-        
-        [Transaction]
-        void Save(PresentList presentList);
+        bool Save(PresentList presentList);
     }
 }

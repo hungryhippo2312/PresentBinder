@@ -28,8 +28,15 @@ namespace DontForgetThePresents.ViewModel
 
         private void SavePresent()
         {
-            _listRepository.Save(_list);
-            Messenger.Default.Send<GoToPreviousViewModel>(new GoToPreviousViewModel());
+            try
+            {
+                _listRepository.Save(_list);
+                Messenger.Default.Send<GoToPreviousViewModel>(new GoToPreviousViewModel());
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("Caught exception in view model: " + e.Message);
+            }
         }
 
         private bool CanSavePresent()
