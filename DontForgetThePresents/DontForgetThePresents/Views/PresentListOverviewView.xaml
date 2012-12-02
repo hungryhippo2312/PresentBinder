@@ -6,42 +6,40 @@
              xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
              xmlns:cmd="clr-namespace:GalaSoft.MvvmLight.Command;assembly=GalaSoft.MvvmLight.Extras.WPF4"
              mc:Ignorable="d" 
-             d:DesignHeight="80" d:DesignWidth="150">
-    <Grid Width="150" Height="80">
-        <Border BorderBrush="Chocolate" BorderThickness="3" CornerRadius="10"/>
-        <!--<TextBlock Margin="10, 10, 10, 10" 
-                   Text="{Binding ListName}"
-                   FontSize="16"
-                   HorizontalAlignment="Center"
-                   VerticalAlignment="Center"
-                   TextWrapping="Wrap">
-            <i:Interaction.Triggers>
-                <i:EventTrigger EventName="MouseLeftButtonUp">
-                    <cmd:EventToCommand Command="{Binding ShowPresentsCommand}" />
-                </i:EventTrigger>
-            </i:Interaction.Triggers>
-        </TextBlock>-->
+             d:DesignHeight="80" d:DesignWidth="250">
+    
+    <Border BorderBrush="Chocolate" BorderThickness="3" CornerRadius="10">
+        <Grid Height="80">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="30" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="30" />
+            </Grid.ColumnDefinitions>
+            
+            <TextBlock
+                Text="{Binding ListName}"
+                FontSize="18"
+                Grid.Row="0"
+                Grid.Column="0"
+                />
+            
+            <TextBlock
+                Text="{Binding NumberOfPresents}"
+                Grid.Row="1"
+                Grid.Column="0"
+                />
+            
+            <TextBlock
+                Text="-->"
+                FontSize="20"
+                Grid.Column="1"
+                Grid.RowSpan="2"
+                VerticalAlignment="Center"
+                />
 
-        <!--<Label 
-            Content="{Binding ListName}"
-            Margin="10, 10, 10, 10"
-            FontSize="16"
-            HorizontalAlignment="Center"
-            VerticalAlignment="Center">
-            <Label.Resources>
-                <Style TargetType="TextBlock">
-                    <Setter Property="TextWrapping" Value="Wrap" />
-                </Style> 
-            </Label.Resources>
-        </Label>-->
-        
-        <Button
-            Command="{Binding ShowPresentsCommand}">
-            <TextBlock Text="{Binding ListName}"
-                       TextWrapping="Wrap" 
-                       FontSize="20"
-                       HorizontalAlignment="Center"/>
-        </Button>
-
-    </Grid>
+        </Grid>
+    </Border>
 </UserControl>

@@ -15,15 +15,17 @@ namespace DontForgetThePresents.ViewModel
         private readonly IPresentListRepository _listRepository;
         private readonly IPresentListOverviewViewModelFactory _presentListOverviewViewModelFactory;
         private readonly IEditableListViewModelFactory _editableListViewModelFactory;
+        private IPresentListViewModelFactory _presentListViewModelFactory;
 
         public RelayCommand NewListCommand { get; private set; }
 
-        public AllListsViewModel(IPresentListRepository listRepository, IPresentListOverviewViewModelFactory presentListViewModelFactory,
-                                 IEditableListViewModelFactory editableListViewModelFactory)
+        public AllListsViewModel(IPresentListRepository listRepository, IPresentListOverviewViewModelFactory listOverviewViewModelFactory,
+                                 IEditableListViewModelFactory editableListViewModelFactory, IPresentListViewModelFactory presentListViewModelFactory)
         {
             _listRepository = listRepository;
-            _presentListOverviewViewModelFactory = presentListViewModelFactory;
+            _presentListOverviewViewModelFactory = listOverviewViewModelFactory;
             _editableListViewModelFactory = editableListViewModelFactory;
+            _presentListViewModelFactory = presentListViewModelFactory;
 
             NewListCommand = new RelayCommand(() => CreateNewList());
         }
@@ -47,6 +49,28 @@ namespace DontForgetThePresents.ViewModel
                     presentListVms.Add(vm);
                 }
                 return presentListVms;
+            }
+        }
+
+        private PresentListOverviewViewModel _selectedList;
+        public PresentListOverviewViewModel SelectedList
+        {
+            get
+            {
+                return _selectedList;
+            }
+            set
+            {
+                if (_selectedList != value)
+                {
+                    _selectedList = value;
+                    RaisePropertyChanged("SelectedList");
+
+                    PresentList list = _selectedList.PresentList;
+                    PresentListViewModel vm = _presentListViewModelFactory.Create(list);
+                    var goToViewModel = new GoToViewModel(vm);
+                    Messenger.Default.Send<GoToViewModel>(goToViewModel);
+                }
             }
         }
     }
