@@ -3,7 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:Views="clr-namespace:DontForgetThePresents.Views"
         DataContext="{Binding [MainWindowViewModel], Source={StaticResource ViewModelLocator}}"
-        Title="MainWindow" Height="350" Width="525">
+        Title="Don't forget the presents" Height="500" Width="400">
     
     <Grid>
         <Grid.RowDefinitions>

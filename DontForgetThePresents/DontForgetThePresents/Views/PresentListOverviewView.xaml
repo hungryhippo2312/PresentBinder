@@ -3,42 +3,84 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
-             xmlns:cmd="clr-namespace:GalaSoft.MvvmLight.Command;assembly=GalaSoft.MvvmLight.Extras.WPF4"
              mc:Ignorable="d" 
              d:DesignHeight="80" d:DesignWidth="250">
-    
-    <Border BorderBrush="Chocolate" BorderThickness="3" CornerRadius="10">
-        <Grid Height="80">
+
+    <Border BorderBrush="CornflowerBlue" BorderThickness="3" CornerRadius="10" Padding="3">
+        <Grid>
             <Grid.RowDefinitions>
-                <RowDefinition Height="*" />
                 <RowDefinition Height="30" />
+                <RowDefinition Height="20" />
+                <RowDefinition Height="20" />
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*" />
-                <ColumnDefinition Width="30" />
+                <ColumnDefinition Width="40" />
             </Grid.ColumnDefinitions>
             
+            <Border BorderBrush="Black" 
+                    BorderThickness="0 0 0 1"
+                    Grid.Row="0"
+                    Grid.Column="0">
+                <TextBlock
+                    Text="{Binding ListName}"
+                    FontSize="18"
+                    TextTrimming="CharacterEllipsis"
+                    
+                    />
+            </Border>
+
             <TextBlock
-                Text="{Binding ListName}"
-                FontSize="18"
-                Grid.Row="0"
-                Grid.Column="0"
-                />
-            
-            <TextBlock
-                Text="{Binding NumberOfPresents}"
+                Text="{Binding Notes}"
+                TextTrimming="CharacterEllipsis"
+                VerticalAlignment="Center"
                 Grid.Row="1"
                 Grid.Column="0"
                 />
             
-            <TextBlock
-                Text="-->"
-                FontSize="20"
-                Grid.Column="1"
-                Grid.RowSpan="2"
-                VerticalAlignment="Center"
+            <Grid
+                Grid.Row="2"
+                Grid.Column="0"
+                VerticalAlignment="Center">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="20" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="30" />
+                </Grid.ColumnDefinitions>
+
+                <TextBlock
+                    Text="Number of presents"
+                    Grid.Row="0"
+                    Grid.Column="0"
+                    />
+
+                <TextBlock 
+                    Text="{Binding NumberOfPresents}"
+                    Grid.Row="0"
+                    Grid.Column="1"
                 />
+
+            </Grid>
+
+            <!--<TextBlock
+                Text="Number of presents"
+                Grid.Row="3"
+                Grid.Column="0"
+                />-->
+
+            <Border BorderBrush="Black" 
+                    BorderThickness="1 0 0 0"
+                    Grid.Column="1"
+                    Grid.RowSpan="3">
+                <Label
+                    Content="-->"
+                    FontSize="20"
+                    
+                    VerticalAlignment="Center"
+                    />
+            </Border>
 
         </Grid>
     </Border>

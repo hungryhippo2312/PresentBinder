@@ -27,7 +27,15 @@
             ItemsSource="{Binding PresentLists}"
             SelectedItem="{Binding SelectedList}"
             HorizontalContentAlignment="Stretch"
+            ScrollViewer.HorizontalScrollBarVisibility="Disabled"
             Grid.Row="1">
+            
+            <ListBox.ItemContainerStyle>
+                <Style TargetType="{x:Type ListBoxItem}">
+                    <Setter Property="Padding" Value="5" />
+                </Style>
+            </ListBox.ItemContainerStyle>
+            
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <Views:PresentListOverviewView />

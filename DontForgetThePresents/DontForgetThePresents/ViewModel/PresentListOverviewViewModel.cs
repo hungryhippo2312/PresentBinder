@@ -11,14 +11,10 @@ namespace DontForgetThePresents.ViewModel
     public class PresentListOverviewViewModel : ViewModelBase
     {
         private PresentList _presentList;
-        private IPresentListViewModelFactory _presentListViewModelFactory;
 
-        public PresentListOverviewViewModel(PresentList presentList, IPresentListViewModelFactory presentListViewModelFactory)
+        public PresentListOverviewViewModel(PresentList presentList)
         {
             _presentList = presentList;
-            _presentListViewModelFactory = presentListViewModelFactory;
-
-            ShowPresentsCommand = new RelayCommand(ShowPresents);
         }
 
         public string ListName
@@ -27,23 +23,24 @@ namespace DontForgetThePresents.ViewModel
             {
                 return _presentList.Name;
             }
-            set
+        }
+
+        public string Notes
+        {
+            get
             {
-                if (value != _presentList.Name)
-                {
-                    _presentList.Name = value;
-                    RaisePropertyChanged("ListName");
-                }
+                return _presentList.Notes;
             }
         }
 
-        public RelayCommand ShowPresentsCommand { get; private set; }
-
-        private void ShowPresents()
+        public int NumberOfPresents
         {
-            PresentListViewModel vm = _presentListViewModelFactory.Create(_presentList);
-            var goToViewModel = new GoToViewModel(vm);
-            Messenger.Default.Send<GoToViewModel>(goToViewModel);
+            get
+            {
+                return _presentList.Presents.Count;
+            }
         }
+
+        public PresentList PresentList { get { return _presentList; } }
     }
 }
