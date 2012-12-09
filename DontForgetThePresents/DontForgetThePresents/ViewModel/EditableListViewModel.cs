@@ -8,13 +8,15 @@ using DontForgetThePresents.Models;
 using GalaSoft.MvvmLight.Command;
 using GalaSoft.MvvmLight.Messaging;
 using DontForgetThePresents.Core.Messenger;
+using System.ComponentModel;
 
 namespace DontForgetThePresents.ViewModel
 {
-    public class EditableListViewModel : ViewModelBase
+    public class EditableListViewModel : ViewModelBase, IEditableObject
     {
         private IPresentListRepository _listRepository;
         private PresentList _list;
+        private PresentList _originalList;
 
         public RelayCommand SaveCommand { get; private set; }
 
@@ -24,6 +26,8 @@ namespace DontForgetThePresents.ViewModel
             _list = list;
 
             SaveCommand = new RelayCommand(() => SavePresent(), () => CanSavePresent());
+            
+            BeginEdit();
         }
 
         private void SavePresent()
@@ -31,10 +35,12 @@ namespace DontForgetThePresents.ViewModel
             try
             {
                 _listRepository.Save(_list);
+                EndEdit();
                 Messenger.Default.Send<GoToPreviousViewModel>(new GoToPreviousViewModel());
             }
             catch (Exception e)
             {
+                CancelEdit();
                 Console.WriteLine("Caught exception in view model: " + e.Message);
             }
         }
@@ -74,6 +80,29 @@ namespace DontForgetThePresents.ViewModel
                     RaisePropertyChanged("Notes");
                 }
             }
+        }
+
+        public void BeginEdit()
+        {
+            _originalList = new PresentList
+            {
+                Name = _list.Name,
+                Notes = _list.Notes
+            };
+        }
+
+        public void CancelEdit()
+        {
+            if (_originalList != null)
+            {
+                Name = _originalList.Name;
+                Notes = _originalList.Notes;
+            }
+        }
+
+        public void EndEdit()
+        {
+            _originalList = null;
         }
     }
 }
