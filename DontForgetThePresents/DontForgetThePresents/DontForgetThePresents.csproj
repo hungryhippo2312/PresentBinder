@@ -120,12 +120,12 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Core\FluentNHibernateInstaller.cs" />
-    <Compile Include="Core\IAllListsViewModelFactory.cs" />
-    <Compile Include="Core\IEditableListViewModelFactory.cs" />
-    <Compile Include="Core\IPresentListViewModelFactory.cs" />
-    <Compile Include="Core\IPresentSummaryViewModelFactory.cs" />
+    <Compile Include="Core\IViewModelFactory.cs" />
+    <Compile Include="Core\Messenger\DisplayErrorSavingDataMessage.cs" />
     <Compile Include="Core\Messenger\GoToPreviousViewModel.cs" />
     <Compile Include="Core\Messenger\GoToViewModel.cs" />
+    <Compile Include="Core\Messenger\HideChildWindowMessage.cs" />
+    <Compile Include="Core\Messenger\ShowChildWindowMessage.cs" />
     <Compile Include="Core\SqlStatementInterceptor.cs" />
     <Compile Include="DataAccess\IPresentListRepository.cs" />
     <Compile Include="DataAccess\IPresentRepository.cs" />
@@ -135,9 +135,9 @@
     <Compile Include="Models\ClassMaps\PresentMap.cs" />
     <Compile Include="Models\PresentList.cs" />
     <Compile Include="Models\Present.cs" />
-    <Compile Include="Core\IPresentListOverviewViewModelFactory.cs" />
     <Compile Include="Core\IWindsorResolver.cs" />
     <Compile Include="ViewModel\AllListsViewModel.cs" />
+    <Compile Include="ViewModel\ChildWindowViewModel.cs" />
     <Compile Include="ViewModel\EditableListViewModel.cs" />
     <Compile Include="ViewModel\MainWindowViewModel.cs" />
     <Compile Include="ViewModel\PresentListOverviewViewModel.cs" />
@@ -149,6 +149,9 @@
     <Compile Include="ViewModel\PresentSummaryViewModel.cs" />
     <Compile Include="Views\AllListsView.xaml.cs">
       <DependentUpon>AllListsView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ChildWindowView.xaml.cs">
+      <DependentUpon>ChildWindowView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\EditableListView.xaml.cs">
       <DependentUpon>EditableListView.xaml</DependentUpon>
@@ -163,6 +166,10 @@
       <DependentUpon>PresentSummaryView.xaml</DependentUpon>
     </Compile>
     <Page Include="Views\AllListsView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\ChildWindowView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

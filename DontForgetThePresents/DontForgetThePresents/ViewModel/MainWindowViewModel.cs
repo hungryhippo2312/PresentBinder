@@ -12,11 +12,11 @@ namespace DontForgetThePresents.ViewModel
         private List<ViewModelBase> _previousViewModels = new List<ViewModelBase>();
         public RelayCommand BackCommand { get; private set; }
 
-        public MainWindowViewModel(IAllListsViewModelFactory allListsViewModelFactory)
+        public MainWindowViewModel(IViewModelFactory viewModelFactory)
         {
             BackCommand = new RelayCommand(() => GoBackOneViewModel(new GoToPreviousViewModel()), () => CanGoBackOneViewModel());
             
-            var allListsVm = allListsViewModelFactory.Create();
+            var allListsVm = viewModelFactory.CreateAllListsViewModel();
             var goToAllListsVm = new GoToViewModel(allListsVm);
             ChangeCurrentViewModel(goToAllListsVm);
 

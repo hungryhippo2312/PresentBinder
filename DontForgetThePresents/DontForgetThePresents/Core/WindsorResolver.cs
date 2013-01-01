@@ -43,23 +43,7 @@ namespace DontForgetThePresents.Core
             _container.AddFacility<NHibernateFacility>();
 
             _container.Register(
-                Component.For<IPresentListOverviewViewModelFactory>()
-                .AsFactory());
-
-            _container.Register(
-                Component.For<IAllListsViewModelFactory>()
-                .AsFactory());
-
-            _container.Register(
-                Component.For<IPresentListViewModelFactory>()
-                .AsFactory());
-
-            _container.Register(
-                Component.For<IPresentSummaryViewModelFactory>()
-                .AsFactory());
-
-            _container.Register(
-                Component.For<IEditableListViewModelFactory>()
+                Component.For<IViewModelFactory>()
                 .AsFactory());
         }
     }

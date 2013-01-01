@@ -1,27 +1,26 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
+﻿using System.Windows;
+using GalaSoft.MvvmLight.Messaging;
+using DontForgetThePresents.Core.Messenger;
 
-namespace DontForgetThePresents
+namespace DontForgetThePresents.Views
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
     public partial class MainWindow : Window
     {
+        private ChildWindowView _childWindowView;
+
         public MainWindow()
         {
             InitializeComponent();
+
+            Loaded += (s, e) =>
+                {
+                    _childWindowView = new ChildWindowView(this);
+                };
+            Messenger.Default.Register<ShowChildWindowMessage>(this, (msg) => _childWindowView.ShowDialog());
+            Messenger.Default.Register<HideChildWindowMessage>(this, (msg) => _childWindowView.Hide());
         }
     }
 }

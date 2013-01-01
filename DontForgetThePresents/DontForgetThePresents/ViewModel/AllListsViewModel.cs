@@ -13,20 +13,15 @@ namespace DontForgetThePresents.ViewModel
     public class AllListsViewModel : ViewModelBase
     {
         private readonly IPresentListRepository _listRepository;
-        private readonly IPresentListOverviewViewModelFactory _presentListOverviewViewModelFactory;
-        private readonly IEditableListViewModelFactory _editableListViewModelFactory;
-        private IPresentListViewModelFactory _presentListViewModelFactory;
+        private readonly IViewModelFactory _viewModelFactory;
 
         public RelayCommand NewListCommand { get; private set; }
         public RelayCommand ShowPresentsCommand { get; private set; }
 
-        public AllListsViewModel(IPresentListRepository listRepository, IPresentListOverviewViewModelFactory listOverviewViewModelFactory,
-                                 IEditableListViewModelFactory editableListViewModelFactory, IPresentListViewModelFactory presentListViewModelFactory)
+        public AllListsViewModel(IPresentListRepository listRepository, IViewModelFactory viewModelFactory)
         {
             _listRepository = listRepository;
-            _presentListOverviewViewModelFactory = listOverviewViewModelFactory;
-            _editableListViewModelFactory = editableListViewModelFactory;
-            _presentListViewModelFactory = presentListViewModelFactory;
+            _viewModelFactory = viewModelFactory;
 
             NewListCommand = new RelayCommand(() => CreateNewList());
             ShowPresentsCommand = new RelayCommand(() => ShowPresents());
@@ -34,7 +29,7 @@ namespace DontForgetThePresents.ViewModel
 
         private void CreateNewList()
         {
-            var vm = _editableListViewModelFactory.Create(_listRepository, new PresentList());
+            var vm = _viewModelFactory.CreateEditableListViewModel(_listRepository, new PresentList());
             GoToViewModel goToViewModel = new GoToViewModel(vm);
             Messenger.Default.Send<GoToViewModel>(goToViewModel);
         }
@@ -47,7 +42,7 @@ namespace DontForgetThePresents.ViewModel
                 IEnumerable<PresentList> presentLists = _listRepository.GetAllLists();
                 foreach (PresentList pl in presentLists)
                 {
-                    var vm = _presentListOverviewViewModelFactory.Create(pl);
+                    var vm = _viewModelFactory.CreatePresentListOverviewViewModel(pl);
                     presentListVms.Add(vm);
                 }
                 return presentListVms;
@@ -74,7 +69,7 @@ namespace DontForgetThePresents.ViewModel
         private void ShowPresents()
         {
             PresentList list = _selectedList.PresentList;
-            PresentListViewModel vm = _presentListViewModelFactory.Create(list);
+            PresentListViewModel vm = _viewModelFactory.CreatePresentListViewModel(list);
             var goToViewModel = new GoToViewModel(vm);
             Messenger.Default.Send<GoToViewModel>(goToViewModel);
         }

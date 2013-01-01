@@ -1,7 +1,6 @@
-﻿<Window x:Class="DontForgetThePresents.MainWindow"
+﻿<Window x:Class="DontForgetThePresents.Views.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:Views="clr-namespace:DontForgetThePresents.Views"
         DataContext="{Binding [MainWindowViewModel], Source={StaticResource ViewModelLocator}}"
         Title="Don't forget the presents" Height="500" Width="400">
     
