@@ -8,13 +8,10 @@
         ShowInTaskbar="False" WindowState="Normal" ResizeMode="NoResize">
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="25" />
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
         
-        <TextBlock Text="{Binding Path=Text, Mode=TwoWay}" Grid.Row="0" />
-        
         <ContentControl Content="{Binding CurrentContent}"
-                        Grid.Row="1"/>
+                        Grid.Row="0"/>
     </Grid>
 </Window>

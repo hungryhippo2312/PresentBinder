@@ -12,19 +12,12 @@ namespace DontForgetThePresents.ViewModel
     {
         private List<ViewModelBase> _previousViewModels = new List<ViewModelBase>();
         public RelayCommand BackCommand { get; private set; }
-        //private ChildWindowViewModel _childWindowViewModel;
-        //private readonly IViewModelFactory _viewModelFactory;
 
         public MainWindowViewModel(IViewModelFactory viewModelFactory)
         {
             BackCommand = new RelayCommand(() => GoBackOneViewModel(new GoToPreviousViewModel()), () => CanGoBackOneViewModel());
 
-            //_viewModelFactory = viewModelFactory;
-            //_childWindowViewModel = viewModelFactory.CreateChildWindowViewModel();
-            //Messenger.Default.Register<DisplayErrorSavingDataMessage>(_childWindowViewModel,
-            //                                                          //(msg) => _childWindowViewModel.CurrentContent = _viewModelFactory.CreateErrorSavingDataViewModel());
-            //                                                          (msg) => _childWindowViewModel.Text = "Changed by MainWindowViewModel");
-            viewModelFactory.CreateChildWindowViewModel();
+            viewModelFactory.CreateChildWindowViewModel(viewModelFactory);
             
             var allListsVm = viewModelFactory.CreateAllListsViewModel();
             var goToAllListsVm = new GoToViewModel(allListsVm);

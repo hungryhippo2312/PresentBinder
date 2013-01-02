@@ -1,33 +1,20 @@
 ﻿using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Messaging;
 using DontForgetThePresents.Core.Messenger;
+using DontForgetThePresents.Core;
 
 namespace DontForgetThePresents.ViewModel
 {
     public class ChildWindowViewModel : ViewModelBase
     {
-        public ChildWindowViewModel()
+        private readonly IViewModelFactory _viewModelFactory;
+
+        public ChildWindowViewModel(IViewModelFactory viewModelFactory)
         {
+            _viewModelFactory = viewModelFactory;
+
             Messenger.Default.Register<DisplayErrorSavingDataMessage>(this,
-                //(msg) => _childWindowViewModel.CurrentContent = _viewModelFactory.CreateErrorSavingDataViewModel());
-                                                                      (msg) => Text = "Changed by something");
-        }
-
-        private string _text;// = "Hello from the child window view model";
-        public string Text
-        {
-            get { return _text; }
-            set
-            {
-                _text = value;
-                RaisePropertyChanged("Text");
-                Messenger.Default.Send(new ShowChildWindowMessage());
-
-                //if (_currentContent != null)
-                //{
-                //    Messenger.Default.Send(new ShowChildWindowMessage());
-                //}
-            }
+                                                                      (msg) => CurrentContent = _viewModelFactory.CreateErrorSavingDataViewModel());
         }
 
         private ViewModelBase _currentContent;
@@ -41,7 +28,6 @@ namespace DontForgetThePresents.ViewModel
             {
                 _currentContent = value;
                 RaisePropertyChanged("CurrentContent");
-                //Messenger.Default.Send(new ShowChildWindowMessage());
 
                 if (_currentContent != null)
                 {
