@@ -1,30 +1,47 @@
 ﻿using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Messaging;
 using DontForgetThePresents.Core.Messenger;
-using DontForgetThePresents.Core;
 
 namespace DontForgetThePresents.ViewModel
 {
     public class ChildWindowViewModel : ViewModelBase
     {
-        private readonly IViewModelFactory _viewModelFactory;
-
-        public ChildWindowViewModel(IViewModelFactory viewModelFactory)
+        public ChildWindowViewModel()
         {
-            _viewModelFactory = viewModelFactory;
+            Messenger.Default.Register<DisplayErrorSavingDataMessage>(this,
+                //(msg) => _childWindowViewModel.CurrentContent = _viewModelFactory.CreateErrorSavingDataViewModel());
+                                                                      (msg) => Text = "Changed by something");
+        }
 
-            //need to get hold of the view model here.
-            //Messenger.Default.Register<DisplayErrorSavingDataMessage>(this, (msg) => CurrentContent = ViewModelLocator.);
+        private string _text;// = "Hello from the child window view model";
+        public string Text
+        {
+            get { return _text; }
+            set
+            {
+                _text = value;
+                RaisePropertyChanged("Text");
+                Messenger.Default.Send(new ShowChildWindowMessage());
+
+                //if (_currentContent != null)
+                //{
+                //    Messenger.Default.Send(new ShowChildWindowMessage());
+                //}
+            }
         }
 
         private ViewModelBase _currentContent;
         public ViewModelBase CurrentContent
         {
-            get { return _currentContent; }
+            get
+            {
+                return _currentContent;
+            }
             set
             {
                 _currentContent = value;
                 RaisePropertyChanged("CurrentContent");
+                //Messenger.Default.Send(new ShowChildWindowMessage());
 
                 if (_currentContent != null)
                 {

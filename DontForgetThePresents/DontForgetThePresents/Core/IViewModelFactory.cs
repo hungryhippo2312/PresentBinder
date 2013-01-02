@@ -20,5 +20,12 @@ namespace DontForgetThePresents.Core
         PresentSummaryViewModel CreatePresentSummaryViewModel(Present present);
 
         #endregion
+
+        #region Child window view models
+
+        ChildWindowViewModel CreateChildWindowViewModel();
+        ErrorSavingDataViewModel CreateErrorSavingDataViewModel();
+
+        #endregion
     }
 }

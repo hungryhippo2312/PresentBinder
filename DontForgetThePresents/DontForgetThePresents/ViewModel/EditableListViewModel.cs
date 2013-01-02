@@ -42,6 +42,7 @@ namespace DontForgetThePresents.ViewModel
             {
                 CancelEdit();
                 Console.WriteLine("Caught exception in view model: " + e.Message);
+                Messenger.Default.Send(new DisplayErrorSavingDataMessage());
             }
         }
 

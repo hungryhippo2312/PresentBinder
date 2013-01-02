@@ -35,6 +35,10 @@
         <DataTemplate DataType="{x:Type vm:EditableListViewModel}">
             <views:EditableListView />
         </DataTemplate>
+
+        <DataTemplate DataType="{x:Type vm:ErrorSavingDataViewModel}">
+            <views:ErrorSavingDataView />
+        </DataTemplate>
         
     </Application.Resources>
 </Application>
