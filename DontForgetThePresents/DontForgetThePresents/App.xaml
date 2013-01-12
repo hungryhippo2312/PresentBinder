@@ -37,9 +37,9 @@
         <DataTemplate DataType="{x:Type vm:EditableListViewModel}">
             <views:EditableListView />
         </DataTemplate>
-
-        <DataTemplate DataType="{x:Type childWindowViewModels:ErrorSavingDataViewModel}">
-            <childWindowViews:ErrorSavingDataView />
+        
+        <DataTemplate DataType="{x:Type childWindowViewModels:ErrorOccurredViewModel}">
+            <childWindowViews:ErrorOccurredView />
         </DataTemplate>
         
     </Application.Resources>

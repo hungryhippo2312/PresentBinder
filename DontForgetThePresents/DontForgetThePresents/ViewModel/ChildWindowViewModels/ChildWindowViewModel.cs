@@ -1,3 +1,4 @@
+using System;
 using DontForgetThePresents.Core;
 using DontForgetThePresents.Core.Messenger;
 using GalaSoft.MvvmLight;
@@ -13,12 +14,52 @@ namespace DontForgetThePresents.ViewModel.ChildWindowViewModels
         {
             _viewModelFactory = viewModelFactory;
 
-            Messenger.Default.Register<DisplayErrorSavingDataMessage>(this, (msg) => CurrentContent = _viewModelFactory.CreateErrorSavingDataViewModel());
-            Messenger.Default.Register<DisplayErrorRetrievingDataMessage>(this, (msg) => CurrentContent = _viewModelFactory.CreateErrorRetrievingDataViewModel());
+            Messenger.Default.Register<DisplayErrorSavingDataMessage>(this, HandleMessage);
+            Messenger.Default.Register<DisplayErrorRetrievingDataMessage>(this, HandleMessage);
         }
 
-        private ViewModelBase _currentContent;
-        public ViewModelBase CurrentContent
+        private void HandleMessage(MessageBase message)
+        {
+            var vm = CreateViewModel(message);
+            Title = vm.Title;
+            CurrentContent = vm;
+
+            Messenger.Default.Send(new ShowChildWindowMessage());
+        }
+
+        private ChildWindowViewModelBase CreateViewModel(MessageBase message)
+        {
+            if (MessageIsForError(message))
+            {
+                return CreateViewModelForError(message);
+            }
+
+            throw new ArgumentException("Unhandled message", "message");
+        }
+
+        private bool MessageIsForError(MessageBase message)
+        {
+            return message is DisplayErrorSavingDataMessage
+                   || message is DisplayErrorRetrievingDataMessage;
+        }
+
+        private ChildWindowViewModelBase CreateViewModelForError(MessageBase message)
+        {
+            var errorVm = _viewModelFactory.CreateErrorOccuredViewModel();
+            if (message is DisplayErrorSavingDataMessage)
+            {
+                errorVm.Description = "There was an error saving the data.";
+            }
+            else if (message is DisplayErrorRetrievingDataMessage)
+            {
+                errorVm.Description = "There was an error retrieving the data. Please try again.";
+            }
+
+            return errorVm;
+        }
+
+        private ChildWindowViewModelBase _currentContent;
+        public ChildWindowViewModelBase CurrentContent
         {
             get
             {
@@ -28,11 +69,20 @@ namespace DontForgetThePresents.ViewModel.ChildWindowViewModels
             {
                 _currentContent = value;
                 RaisePropertyChanged("CurrentContent");
+            }
+        }
 
-                if (_currentContent != null)
-                {
-                    Messenger.Default.Send(new ShowChildWindowMessage());
-                }
+        private string _title;
+        public string Title
+        {
+            get
+            {
+                return _title;
+            }
+            private set
+            {
+                _title = value;
+                RaisePropertyChanged("Title");
             }
         }
     }

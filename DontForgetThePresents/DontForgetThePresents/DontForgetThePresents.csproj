@@ -140,9 +140,8 @@
     <Compile Include="Core\IWindsorResolver.cs" />
     <Compile Include="ViewModel\AllListsViewModel.cs" />
     <Compile Include="ViewModel\ChildWindowViewModels\ChildWindowViewModel.cs" />
+    <Compile Include="ViewModel\ChildWindowViewModels\ChildWindowViewModelBase.cs" />
     <Compile Include="ViewModel\ChildWindowViewModels\ErrorOccurredViewModel.cs" />
-    <Compile Include="ViewModel\ChildWindowViewModels\ErrorRetrievingDataViewModel.cs" />
-    <Compile Include="ViewModel\ChildWindowViewModels\ErrorSavingDataViewModel.cs" />
     <Compile Include="ViewModel\EditableListViewModel.cs" />
     <Compile Include="ViewModel\MainWindowViewModel.cs" />
     <Compile Include="ViewModel\PresentListOverviewViewModel.cs" />
@@ -158,8 +157,8 @@
     <Compile Include="Views\ChildWindowViews\ChildWindowView.xaml.cs">
       <DependentUpon>ChildWindowView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\ChildWindowViews\ErrorSavingDataView.xaml.cs">
-      <DependentUpon>ErrorSavingDataView.xaml</DependentUpon>
+    <Compile Include="Views\ChildWindowViews\ErrorOccurredView.xaml.cs">
+      <DependentUpon>ErrorOccurredView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\EditableListView.xaml.cs">
       <DependentUpon>EditableListView.xaml</DependentUpon>
@@ -181,9 +180,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Views\ChildWindowViews\ErrorSavingDataView.xaml">
-      <Generator>MSBuild:Compile</Generator>
+    <Page Include="Views\ChildWindowViews\ErrorOccurredView.xaml">
       <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\EditableListView.xaml">
       <SubType>Designer</SubType>

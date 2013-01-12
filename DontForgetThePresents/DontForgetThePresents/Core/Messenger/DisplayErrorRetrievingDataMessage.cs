@@ -1,8 +1,8 @@
-using System;
+using GalaSoft.MvvmLight.Messaging;
 
 namespace DontForgetThePresents.Core.Messenger
 {
-    public class DisplayErrorRetrievingDataMessage : Exception
+    public class DisplayErrorRetrievingDataMessage : MessageBase
     {
     }
 }
