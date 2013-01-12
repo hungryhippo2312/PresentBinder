@@ -52,8 +52,7 @@ namespace DontForgetThePresents.ViewModel
                 }
                 catch (RepositoryException)
                 {
-                    var message = new DisplayErrorRetrievingDataMessage();
-                    Messenger.Default.Send(message);
+                    Messenger.Default.Send(new DisplayErrorRetrievingDataMessage());
                 }
                 
                 return presentListVms;

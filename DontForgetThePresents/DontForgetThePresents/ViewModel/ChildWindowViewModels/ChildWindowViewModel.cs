@@ -1,3 +1,4 @@
+using System;
 using DontForgetThePresents.Core;
 using DontForgetThePresents.Core.Messenger;
 using GalaSoft.MvvmLight;
@@ -13,8 +14,24 @@ namespace DontForgetThePresents.ViewModel.ChildWindowViewModels
         {
             _viewModelFactory = viewModelFactory;
 
-            Messenger.Default.Register<DisplayErrorSavingDataMessage>(this, (msg) => CurrentContent = _viewModelFactory.CreateErrorSavingDataViewModel());
-            Messenger.Default.Register<DisplayErrorRetrievingDataMessage>(this, (msg) => CurrentContent = _viewModelFactory.CreateErrorRetrievingDataViewModel());
+            Messenger.Default.Register<DisplayErrorOccuredMessage>(this, HandleMessage);
+        }
+
+        private void HandleMessage(MessageBase message)
+        {
+            var vm = _viewModelFactory.CreateErrorOccurredViewModel();
+            if (message is DisplayErrorSavingDataMessage)
+            {
+                vm.Description = "There was an error saving the data.";
+            }
+            else if (message is DisplayErrorRetrievingDataMessage)
+            {
+                vm.Description = "There was an error retrieving the data.";
+            }
+            else
+            {
+                throw new ArgumentException("unhandled message type", "message");
+            }
         }
 
         private ViewModelBase _currentContent;
