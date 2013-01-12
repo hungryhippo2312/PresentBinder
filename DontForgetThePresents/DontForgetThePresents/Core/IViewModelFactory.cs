@@ -1,6 +1,7 @@
 ﻿using DontForgetThePresents.DataAccess;
 using DontForgetThePresents.Models;
 using DontForgetThePresents.ViewModel;
+using DontForgetThePresents.ViewModel.ChildWindowViewModels;
 
 namespace DontForgetThePresents.Core
 {
@@ -25,6 +26,7 @@ namespace DontForgetThePresents.Core
 
         ChildWindowViewModel CreateChildWindowViewModel(IViewModelFactory viewModelFactory);
         ErrorSavingDataViewModel CreateErrorSavingDataViewModel();
+        ErrorRetrievingDataViewModel CreateErrorRetrievingDataViewModel();
 
         #endregion
     }

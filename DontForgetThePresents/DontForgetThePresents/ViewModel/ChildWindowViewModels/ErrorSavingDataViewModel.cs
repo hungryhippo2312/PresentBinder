@@ -1,7 +1,6 @@
-﻿using System;
 using GalaSoft.MvvmLight;
 
-namespace DontForgetThePresents.ViewModel
+namespace DontForgetThePresents.ViewModel.ChildWindowViewModels
 {
     public class ErrorSavingDataViewModel : ViewModelBase
     {

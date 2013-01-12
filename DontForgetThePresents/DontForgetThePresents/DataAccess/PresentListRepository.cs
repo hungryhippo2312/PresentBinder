@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Castle.Facilities.NHibernate;
 using Castle.Transactions;
+using DontForgetThePresents.Core.Exceptions;
 using DontForgetThePresents.Models;
 using NHibernate;
 using NHibernate.Linq;
@@ -23,9 +24,17 @@ namespace DontForgetThePresents.DataAccess
         {
             using (ISession session = _sessionManager.OpenSession())
             {
-                return session.Query<PresentList>()
-                    .FetchMany(pl => pl.Presents)
-                    .ToList<PresentList>();
+                try
+                {
+                    return session.Query<PresentList>()
+                        .FetchMany(pl => pl.Presents)
+                        .ToList<PresentList>();
+                }
+                catch (HibernateException ne)
+                {
+                    Console.WriteLine(ne.Message);
+                    throw new RepositoryException();
+                }
             }
         }
 
@@ -37,12 +46,12 @@ namespace DontForgetThePresents.DataAccess
                 try
                 {
                     session.SaveOrUpdate(presentList);
-                    throw new Exception("Exception thrown when saving list.");
+                    throw new HibernateException();
                 }
-                catch (Exception e)
+                catch (HibernateException e)
                 {
                     Console.WriteLine(e.Message);
-                    throw;
+                    throw new RepositoryException();
                 }
             }
         }

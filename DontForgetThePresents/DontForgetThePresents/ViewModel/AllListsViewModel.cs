@@ -1,6 +1,8 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using DontForgetThePresents.Core;
+using DontForgetThePresents.Core.Exceptions;
 using DontForgetThePresents.Core.Messenger;
 using DontForgetThePresents.DataAccess;
 using DontForgetThePresents.Models;
@@ -39,12 +41,21 @@ namespace DontForgetThePresents.ViewModel
             get
             {
                 var presentListVms = new ObservableCollection<PresentListOverviewViewModel>();
-                IEnumerable<PresentList> presentLists = _listRepository.GetAllLists();
-                foreach (PresentList pl in presentLists)
+                try
                 {
-                    var vm = _viewModelFactory.CreatePresentListOverviewViewModel(pl);
-                    presentListVms.Add(vm);
+                    IEnumerable<PresentList> presentLists = _listRepository.GetAllLists();
+                    foreach (PresentList pl in presentLists)
+                    {
+                        var vm = _viewModelFactory.CreatePresentListOverviewViewModel(pl);
+                        presentListVms.Add(vm);
+                    }
                 }
+                catch (RepositoryException)
+                {
+                    var message = new DisplayErrorRetrievingDataMessage();
+                    Messenger.Default.Send(message);
+                }
+                
                 return presentListVms;
             }
         }

@@ -9,7 +9,7 @@ namespace DontForgetThePresents.Views
     /// </summary>
     public partial class MainWindow : Window
     {
-        private ChildWindowView _childWindowView;
+        private ChildWindowViews.ChildWindowView _childWindowView;
 
         public MainWindow()
         {
@@ -17,7 +17,7 @@ namespace DontForgetThePresents.Views
 
             Loaded += (s, e) =>
                 {
-                    _childWindowView = new ChildWindowView(this);
+                    _childWindowView = new ChildWindowViews.ChildWindowView(this);
                 };
             Messenger.Default.Register<ShowChildWindowMessage>(this, (msg) => _childWindowView.ShowDialog());
             Messenger.Default.Register<HideChildWindowMessage>(this, (msg) => _childWindowView.Hide());

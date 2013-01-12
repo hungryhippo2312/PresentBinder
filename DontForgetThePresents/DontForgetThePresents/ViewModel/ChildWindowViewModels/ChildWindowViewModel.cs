@@ -1,9 +1,9 @@
-﻿using GalaSoft.MvvmLight;
-using GalaSoft.MvvmLight.Messaging;
-using DontForgetThePresents.Core.Messenger;
 using DontForgetThePresents.Core;
+using DontForgetThePresents.Core.Messenger;
+using GalaSoft.MvvmLight;
+using GalaSoft.MvvmLight.Messaging;
 
-namespace DontForgetThePresents.ViewModel
+namespace DontForgetThePresents.ViewModel.ChildWindowViewModels
 {
     public class ChildWindowViewModel : ViewModelBase
     {
@@ -13,8 +13,8 @@ namespace DontForgetThePresents.ViewModel
         {
             _viewModelFactory = viewModelFactory;
 
-            Messenger.Default.Register<DisplayErrorSavingDataMessage>(this,
-                                                                      (msg) => CurrentContent = _viewModelFactory.CreateErrorSavingDataViewModel());
+            Messenger.Default.Register<DisplayErrorSavingDataMessage>(this, (msg) => CurrentContent = _viewModelFactory.CreateErrorSavingDataViewModel());
+            Messenger.Default.Register<DisplayErrorRetrievingDataMessage>(this, (msg) => CurrentContent = _viewModelFactory.CreateErrorRetrievingDataViewModel());
         }
 
         private ViewModelBase _currentContent;

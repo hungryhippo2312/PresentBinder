@@ -119,8 +119,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Core\Exceptions\RepositoryException.cs" />
     <Compile Include="Core\FluentNHibernateInstaller.cs" />
     <Compile Include="Core\IViewModelFactory.cs" />
+    <Compile Include="Core\Messenger\DisplayErrorRetrievingDataMessage.cs" />
     <Compile Include="Core\Messenger\DisplayErrorSavingDataMessage.cs" />
     <Compile Include="Core\Messenger\GoToPreviousViewModel.cs" />
     <Compile Include="Core\Messenger\GoToViewModel.cs" />
@@ -137,9 +139,11 @@
     <Compile Include="Models\Present.cs" />
     <Compile Include="Core\IWindsorResolver.cs" />
     <Compile Include="ViewModel\AllListsViewModel.cs" />
-    <Compile Include="ViewModel\ChildWindowViewModel.cs" />
+    <Compile Include="ViewModel\ChildWindowViewModels\ChildWindowViewModel.cs" />
+    <Compile Include="ViewModel\ChildWindowViewModels\ErrorOccurredViewModel.cs" />
+    <Compile Include="ViewModel\ChildWindowViewModels\ErrorRetrievingDataViewModel.cs" />
+    <Compile Include="ViewModel\ChildWindowViewModels\ErrorSavingDataViewModel.cs" />
     <Compile Include="ViewModel\EditableListViewModel.cs" />
-    <Compile Include="ViewModel\ErrorSavingDataViewModel.cs" />
     <Compile Include="ViewModel\MainWindowViewModel.cs" />
     <Compile Include="ViewModel\PresentListOverviewViewModel.cs" />
     <Compile Include="Core\ViewModelLocator.cs" />
@@ -151,14 +155,14 @@
     <Compile Include="Views\AllListsView.xaml.cs">
       <DependentUpon>AllListsView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\ChildWindowView.xaml.cs">
+    <Compile Include="Views\ChildWindowViews\ChildWindowView.xaml.cs">
       <DependentUpon>ChildWindowView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ChildWindowViews\ErrorSavingDataView.xaml.cs">
+      <DependentUpon>ErrorSavingDataView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\EditableListView.xaml.cs">
       <DependentUpon>EditableListView.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Views\ErrorSavingDataView.xaml.cs">
-      <DependentUpon>ErrorSavingDataView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\PresentListOverviewView.xaml.cs">
       <DependentUpon>PresentListOverviewView.xaml</DependentUpon>
@@ -173,15 +177,15 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\ChildWindowView.xaml">
-      <SubType>Designer</SubType>
+    <Page Include="Views\ChildWindowViews\ChildWindowView.xaml">
       <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\ChildWindowViews\ErrorSavingDataView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="Views\EditableListView.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Views\ErrorSavingDataView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

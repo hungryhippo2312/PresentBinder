@@ -1,8 +1,8 @@
-﻿using System.Windows;
-using GalaSoft.MvvmLight.Messaging;
+using System.Windows;
 using DontForgetThePresents.Core.Messenger;
+using GalaSoft.MvvmLight.Messaging;
 
-namespace DontForgetThePresents.Views
+namespace DontForgetThePresents.Views.ChildWindowViews
 {
     /// <summary>
     /// Interaction logic for ChildWindow.xaml

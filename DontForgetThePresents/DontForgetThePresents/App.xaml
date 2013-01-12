@@ -8,6 +8,8 @@
              xmlns:core="clr-namespace:DontForgetThePresents.Core"
              xmlns:vm="clr-namespace:DontForgetThePresents.ViewModel"
              xmlns:views="clr-namespace:DontForgetThePresents.Views"
+             xmlns:childWindowViewModels="clr-namespace:DontForgetThePresents.ViewModel.ChildWindowViewModels"
+             xmlns:childWindowViews="clr-namespace:DontForgetThePresents.Views.ChildWindowViews"
              mc:Ignorable="d">
     <Application.Resources>
         <core:ViewModelLocator x:Key="ViewModelLocator">
@@ -36,8 +38,8 @@
             <views:EditableListView />
         </DataTemplate>
 
-        <DataTemplate DataType="{x:Type vm:ErrorSavingDataViewModel}">
-            <views:ErrorSavingDataView />
+        <DataTemplate DataType="{x:Type childWindowViewModels:ErrorSavingDataViewModel}">
+            <childWindowViews:ErrorSavingDataView />
         </DataTemplate>
         
     </Application.Resources>

@@ -15,7 +15,8 @@ namespace DontForgetThePresents.Core
         {
             if (_container == null)
             {
-                configureContainer();
+                _container = new WindsorContainer();
+                ConfigureContainer();
             }
 
             var viewModelType =
@@ -28,10 +29,8 @@ namespace DontForgetThePresents.Core
             return _container.Resolve(viewModelType);
         }
 
-        private void configureContainer()
+        private void ConfigureContainer()
         {
-            _container = new WindsorContainer();
-
             _container.Install(new WindsorViewsInstaller());
             _container.Install(new WindsorRepositoriesInstaller());
 

@@ -9,6 +9,7 @@ using GalaSoft.MvvmLight.Command;
 using GalaSoft.MvvmLight.Messaging;
 using DontForgetThePresents.Core.Messenger;
 using System.ComponentModel;
+using DontForgetThePresents.Core.Exceptions;
 
 namespace DontForgetThePresents.ViewModel
 {
@@ -38,11 +39,12 @@ namespace DontForgetThePresents.ViewModel
                 EndEdit();
                 Messenger.Default.Send<GoToPreviousViewModel>(new GoToPreviousViewModel());
             }
-            catch (Exception e)
+            catch (RepositoryException)
             {
                 CancelEdit();
-                Console.WriteLine("Caught exception in view model: " + e.Message);
-                Messenger.Default.Send(new DisplayErrorSavingDataMessage());
+
+                var message = new DisplayErrorSavingDataMessage();
+                Messenger.Default.Send(message);
             }
         }
 
