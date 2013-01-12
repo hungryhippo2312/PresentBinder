@@ -122,7 +122,8 @@
     <Compile Include="Core\Exceptions\RepositoryException.cs" />
     <Compile Include="Core\FluentNHibernateInstaller.cs" />
     <Compile Include="Core\IViewModelFactory.cs" />
-    <Compile Include="Core\Messenger\DisplayErrorOccuredMessage.cs" />
+    <Compile Include="Core\Messenger\DisplayErrorRetrievingDataMessage.cs" />
+    <Compile Include="Core\Messenger\DisplayErrorSavingDataMessage.cs" />
     <Compile Include="Core\Messenger\GoToPreviousViewModel.cs" />
     <Compile Include="Core\Messenger\GoToViewModel.cs" />
     <Compile Include="Core\Messenger\HideChildWindowMessage.cs" />
