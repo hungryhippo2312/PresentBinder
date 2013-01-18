@@ -119,6 +119,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Core\CodeAnnotations.cs" />
     <Compile Include="Core\Exceptions\RepositoryException.cs" />
     <Compile Include="Core\FluentNHibernateInstaller.cs" />
     <Compile Include="Core\IViewModelFactory.cs" />
