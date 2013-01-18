@@ -1,4 +1,5 @@
-﻿using GalaSoft.MvvmLight;
+﻿using DontForgetThePresents.Core;
+using GalaSoft.MvvmLight;
 using DontForgetThePresents.DataAccess;
 using DontForgetThePresents.Models;
 using GalaSoft.MvvmLight.Command;
@@ -15,6 +16,7 @@ namespace DontForgetThePresents.ViewModel
         private readonly PresentList _list;
         private PresentList _originalList;
 
+        [UsedImplicitly]
         public RelayCommand SaveCommand { get; private set; }
 
         public EditableListViewModel(IPresentListRepository listRepository, PresentList list)
@@ -22,7 +24,7 @@ namespace DontForgetThePresents.ViewModel
             _listRepository = listRepository;
             _list = list;
 
-            SaveCommand = new RelayCommand(() => SavePresent(), () => CanSavePresent());
+            SaveCommand = new RelayCommand(SavePresent, CanSavePresent);
             
             BeginEdit();
         }
@@ -49,6 +51,7 @@ namespace DontForgetThePresents.ViewModel
             return true;
         }
 
+        [UsedImplicitly]
         public string Name
         {
             get
@@ -65,6 +68,7 @@ namespace DontForgetThePresents.ViewModel
             }
         }
 
+        [UsedImplicitly]
         public string Notes
         {
             get

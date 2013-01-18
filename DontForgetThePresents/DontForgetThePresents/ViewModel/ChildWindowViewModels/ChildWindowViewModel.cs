@@ -59,6 +59,7 @@ namespace DontForgetThePresents.ViewModel.ChildWindowViewModels
         }
 
         private ChildWindowViewModelBase _currentContent;
+        [UsedImplicitly]
         public ChildWindowViewModelBase CurrentContent
         {
             get
@@ -73,6 +74,7 @@ namespace DontForgetThePresents.ViewModel.ChildWindowViewModels
         }
 
         private string _title;
+        [UsedImplicitly]
         public string Title
         {
             get

@@ -4,6 +4,7 @@ namespace DontForgetThePresents.Core
 {
     public class ViewModelLocator : DynamicObject
     {
+        [UsedImplicitly]
         public IWindsorResolver Resolver { get; set; }
 
         public ViewModelLocator()

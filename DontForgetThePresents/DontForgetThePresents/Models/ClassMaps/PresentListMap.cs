@@ -1,7 +1,9 @@
-﻿using FluentNHibernate.Mapping;
+﻿using DontForgetThePresents.Core;
+using FluentNHibernate.Mapping;
 
 namespace DontForgetThePresents.Models.ClassMaps
 {
+    [UsedImplicitly]
     public class PresentListMap : ClassMap<PresentList>
     {
         public PresentListMap()

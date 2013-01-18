@@ -10,11 +10,13 @@ namespace DontForgetThePresents.ViewModel
     public class MainWindowViewModel : ViewModelBase
     {
         private readonly List<ViewModelBase> _previousViewModels = new List<ViewModelBase>();
+
+        [UsedImplicitly]
         public RelayCommand BackCommand { get; private set; }
 
         public MainWindowViewModel(IViewModelFactory viewModelFactory)
         {
-            BackCommand = new RelayCommand(() => GoBackOneViewModel(new GoToPreviousViewModel()), () => CanGoBackOneViewModel());
+            BackCommand = new RelayCommand(() => GoBackOneViewModel(new GoToPreviousViewModel()), CanGoBackOneViewModel);
 
             viewModelFactory.CreateChildWindowViewModel(viewModelFactory);
             
@@ -43,6 +45,7 @@ namespace DontForgetThePresents.ViewModel
         }
 
         private ViewModelBase _currentViewModel;
+        [UsedImplicitly]
         public ViewModelBase CurrentViewModel
         {
             get

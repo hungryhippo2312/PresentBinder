@@ -21,10 +21,8 @@ namespace DontForgetThePresents.Core
 
             var viewModelType =
                 GetType()
-                .Assembly
-                .GetTypes()
-                .Where(t => t.Name.Equals(viewModelName))
-                .FirstOrDefault();
+                    .Assembly
+                    .GetTypes().FirstOrDefault(t => t.Name.Equals(viewModelName));
 
             return _container.Resolve(viewModelType);
         }

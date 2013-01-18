@@ -16,7 +16,9 @@ namespace DontForgetThePresents.ViewModel
         private readonly IPresentListRepository _listRepository;
         private readonly IViewModelFactory _viewModelFactory;
 
+        [UsedImplicitly]
         public RelayCommand NewListCommand { get; private set; }
+        [UsedImplicitly]
         public RelayCommand ShowPresentsCommand { get; private set; }
 
         public AllListsViewModel(IPresentListRepository listRepository, IViewModelFactory viewModelFactory)
@@ -24,8 +26,8 @@ namespace DontForgetThePresents.ViewModel
             _listRepository = listRepository;
             _viewModelFactory = viewModelFactory;
 
-            NewListCommand = new RelayCommand(() => CreateNewList());
-            ShowPresentsCommand = new RelayCommand(() => ShowPresents());
+            NewListCommand = new RelayCommand(CreateNewList);
+            ShowPresentsCommand = new RelayCommand(ShowPresents);
         }
 
         private void CreateNewList()
@@ -34,6 +36,7 @@ namespace DontForgetThePresents.ViewModel
             Messenger.Default.Send(new GoToViewModel(vm));
         }
 
+        [UsedImplicitly]
         public ObservableCollection<PresentListOverviewViewModel> PresentLists
         {
             get
@@ -59,6 +62,7 @@ namespace DontForgetThePresents.ViewModel
         }
 
         private PresentListOverviewViewModel _selectedList;
+        [UsedImplicitly]
         public PresentListOverviewViewModel SelectedList
         {
             get

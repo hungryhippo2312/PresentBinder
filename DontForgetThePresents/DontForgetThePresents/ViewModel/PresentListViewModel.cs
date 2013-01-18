@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using GalaSoft.MvvmLight;
 using DontForgetThePresents.Models;
 using DontForgetThePresents.DataAccess;
@@ -15,6 +16,7 @@ namespace DontForgetThePresents.ViewModel
         private readonly IPresentListRepository _listRepository;
         private readonly IViewModelFactory _viewModelFactory;
 
+        [UsedImplicitly]
         public RelayCommand EditCommand { get; private set; }
 
         public PresentListViewModel(PresentList presentList, IPresentListRepository listRepository, IViewModelFactory viewModelFactory)
@@ -23,7 +25,7 @@ namespace DontForgetThePresents.ViewModel
             _listRepository = listRepository;
             _viewModelFactory = viewModelFactory;
 
-            EditCommand = new RelayCommand(() => EditPresent());
+            EditCommand = new RelayCommand(EditPresent);
         }
 
         private void EditPresent()
@@ -31,7 +33,8 @@ namespace DontForgetThePresents.ViewModel
             var vm = _viewModelFactory.CreateEditableListViewModel(_listRepository, _presentList);
             Messenger.Default.Send(new GoToViewModel(vm));
         }
-
+        
+        [UsedImplicitly]
         public string ListName
         {
             get
@@ -48,6 +51,7 @@ namespace DontForgetThePresents.ViewModel
             }
         }
 
+        [UsedImplicitly]
         public string Notes
         {
             get
@@ -64,6 +68,7 @@ namespace DontForgetThePresents.ViewModel
             }
         }
 
+        [UsedImplicitly]
         public int NumberOfPresents
         {
             get
@@ -72,17 +77,12 @@ namespace DontForgetThePresents.ViewModel
             }
         }
 
+        [UsedImplicitly]
         public IList<PresentSummaryViewModel> Presents
         {
             get
             {
-                List<PresentSummaryViewModel> presentSummaries = new List<PresentSummaryViewModel>();
-                foreach (Present present in _presentList.Presents)
-                {
-                    PresentSummaryViewModel vm = _viewModelFactory.CreatePresentSummaryViewModel(present);
-                    presentSummaries.Add(vm);
-                }
-                return presentSummaries;
+                return _presentList.Presents.Select(present => _viewModelFactory.CreatePresentSummaryViewModel(present)).ToList();
             }
         }
     }

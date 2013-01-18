@@ -1,4 +1,5 @@
-﻿using DontForgetThePresents.Models;
+﻿using DontForgetThePresents.Core;
+using DontForgetThePresents.Models;
 using GalaSoft.MvvmLight;
 
 namespace DontForgetThePresents.ViewModel
@@ -12,6 +13,7 @@ namespace DontForgetThePresents.ViewModel
             _presentList = presentList;
         }
 
+        [UsedImplicitly]
         public string ListName
         {
             get
@@ -20,6 +22,7 @@ namespace DontForgetThePresents.ViewModel
             }
         }
 
+        [UsedImplicitly]
         public string Notes
         {
             get
@@ -28,6 +31,7 @@ namespace DontForgetThePresents.ViewModel
             }
         }
 
+        [UsedImplicitly]
         public int NumberOfPresents
         {
             get

@@ -1,7 +1,9 @@
 ﻿using System.Collections.Generic;
+using DontForgetThePresents.Core;
 
 namespace DontForgetThePresents.Models
 {
+    [UsedImplicitly(ImplicitUseTargetFlags.WithMembers)]
     public class PresentList
     {
         public virtual int Id { get; set; }

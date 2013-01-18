@@ -46,7 +46,6 @@ namespace DontForgetThePresents.DataAccess
                 try
                 {
                     session.SaveOrUpdate(presentList);
-                    throw new HibernateException();
                 }
                 catch (HibernateException e)
                 {
