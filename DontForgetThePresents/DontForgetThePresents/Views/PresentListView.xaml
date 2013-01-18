@@ -3,6 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
              xmlns:Views="clr-namespace:DontForgetThePresents.Views"
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
@@ -33,16 +34,31 @@
         </Grid>
         
         <TextBlock Text="Presents" />
-        <ScrollViewer ScrollViewer.VerticalScrollBarVisibility="Auto">
-            <ItemsControl 
-                ItemsSource="{Binding Presents}">
-                <ItemsControl.ItemTemplate>
-                    <DataTemplate>
-                        <Views:PresentSummaryView />
-                    </DataTemplate>
-                </ItemsControl.ItemTemplate>
-            </ItemsControl>
-        </ScrollViewer>
+        
+        <ListBox
+            ItemsSource="{Binding Presents}"
+            HorizontalContentAlignment="Stretch"
+            ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+
+            <ListBox.ItemContainerStyle>
+                <Style TargetType="{x:Type ListBoxItem}">
+                    <Setter Property="Padding" Value="5" />
+                </Style>
+            </ListBox.ItemContainerStyle>
+
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <Views:PresentSummaryView />
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+
+            <!--<i:Interaction.Triggers>
+                <i:EventTrigger EventName="MouseDoubleClick">
+                    <i:InvokeCommandAction Command="{Binding ShowPresentsCommand}" />
+                </i:EventTrigger>
+            </i:Interaction.Triggers>-->
+
+        </ListBox>
         
         <Button
             Content="Edit list"
