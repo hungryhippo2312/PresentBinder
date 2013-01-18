@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using DontForgetThePresents.Core;
 using GalaSoft.MvvmLight;
@@ -10,7 +9,7 @@ namespace DontForgetThePresents.ViewModel
 {
     public class MainWindowViewModel : ViewModelBase
     {
-        private List<ViewModelBase> _previousViewModels = new List<ViewModelBase>();
+        private readonly List<ViewModelBase> _previousViewModels = new List<ViewModelBase>();
         public RelayCommand BackCommand { get; private set; }
 
         public MainWindowViewModel(IViewModelFactory viewModelFactory)

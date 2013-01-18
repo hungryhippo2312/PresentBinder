@@ -1,7 +1,4 @@
-﻿using System.Collections.Generic;
-using Castle.Facilities.NHibernate;
-using DontForgetThePresents.Models;
-using NHibernate;
+﻿using Castle.Facilities.NHibernate;
 
 namespace DontForgetThePresents.DataAccess
 {

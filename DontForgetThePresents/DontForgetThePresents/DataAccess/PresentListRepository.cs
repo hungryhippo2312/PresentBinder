@@ -12,7 +12,7 @@ namespace DontForgetThePresents.DataAccess
 {
     public class PresentListRepository : IPresentListRepository
     {
-        private ISessionManager _sessionManager;
+        private readonly ISessionManager _sessionManager;
 
         public PresentListRepository(ISessionManager sessionManager)
         {
@@ -28,7 +28,7 @@ namespace DontForgetThePresents.DataAccess
                 {
                     return session.Query<PresentList>()
                         .FetchMany(pl => pl.Presents)
-                        .ToList<PresentList>();
+                        .ToList();
                 }
                 catch (HibernateException ne)
                 {
@@ -39,7 +39,7 @@ namespace DontForgetThePresents.DataAccess
         }
 
         [Transaction]
-        public virtual bool Save(PresentList presentList)
+        public virtual void Save(PresentList presentList)
         {
             using (ISession session = _sessionManager.OpenSession())
             {

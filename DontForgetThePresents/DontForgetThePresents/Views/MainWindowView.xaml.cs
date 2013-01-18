@@ -19,8 +19,8 @@ namespace DontForgetThePresents.Views
                 {
                     _childWindowView = new ChildWindowViews.ChildWindowView(this);
                 };
-            Messenger.Default.Register<ShowChildWindowMessage>(this, (msg) => _childWindowView.ShowDialog());
-            Messenger.Default.Register<HideChildWindowMessage>(this, (msg) => _childWindowView.Hide());
+            Messenger.Default.Register<ShowChildWindowMessage>(this, msg => _childWindowView.ShowDialog());
+            Messenger.Default.Register<HideChildWindowMessage>(this, msg => _childWindowView.Hide());
         }
     }
 }

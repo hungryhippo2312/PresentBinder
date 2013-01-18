@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using DontForgetThePresents.Core;
 using DontForgetThePresents.Core.Exceptions;
@@ -32,8 +31,7 @@ namespace DontForgetThePresents.ViewModel
         private void CreateNewList()
         {
             var vm = _viewModelFactory.CreateEditableListViewModel(_listRepository, new PresentList());
-            GoToViewModel goToViewModel = new GoToViewModel(vm);
-            Messenger.Default.Send<GoToViewModel>(goToViewModel);
+            Messenger.Default.Send(new GoToViewModel(vm));
         }
 
         public ObservableCollection<PresentListOverviewViewModel> PresentLists
@@ -81,8 +79,7 @@ namespace DontForgetThePresents.ViewModel
         {
             PresentList list = _selectedList.PresentList;
             PresentListViewModel vm = _viewModelFactory.CreatePresentListViewModel(list);
-            var goToViewModel = new GoToViewModel(vm);
-            Messenger.Default.Send<GoToViewModel>(goToViewModel);
+            Messenger.Default.Send(new GoToViewModel(vm));
         }
     }
 }

@@ -24,7 +24,7 @@ namespace DontForgetThePresents.Core
 
         #region Child window view models
 
-        ChildWindowViewModel CreateChildWindowViewModel(IViewModelFactory viewModelFactory);
+        void CreateChildWindowViewModel(IViewModelFactory viewModelFactory);
         ErrorOccurredViewModel CreateErrorOccuredViewModel();
 
         #endregion

@@ -1,16 +1,11 @@
 ﻿using DontForgetThePresents.Models;
 using GalaSoft.MvvmLight;
-using GalaSoft.MvvmLight.Command;
-using System.Windows;
-using GalaSoft.MvvmLight.Messaging;
-using DontForgetThePresents.Core;
-using DontForgetThePresents.Core.Messenger;
 
 namespace DontForgetThePresents.ViewModel
 {
     public class PresentListOverviewViewModel : ViewModelBase
     {
-        private PresentList _presentList;
+        private readonly PresentList _presentList;
 
         public PresentListOverviewViewModel(PresentList presentList)
         {

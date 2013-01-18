@@ -1,5 +1,5 @@
 ﻿using System.Collections.Generic;
-using System;
+
 namespace DontForgetThePresents.Models
 {
     public class PresentList
@@ -10,9 +10,5 @@ namespace DontForgetThePresents.Models
         public virtual byte[] Version { get; set; }
 
         public virtual IList<Present> Presents { get; set; }
-
-        public PresentList()
-        {
-        }
     }
 }

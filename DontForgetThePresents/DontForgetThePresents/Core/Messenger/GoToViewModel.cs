@@ -1,14 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using GalaSoft.MvvmLight;
+﻿using GalaSoft.MvvmLight;
 
 namespace DontForgetThePresents.Core.Messenger
 {
     public class GoToViewModel
     {
-        private ViewModelBase _viewModel;
+        private readonly ViewModelBase _viewModel;
 
         public GoToViewModel(ViewModelBase viewModel)
         {

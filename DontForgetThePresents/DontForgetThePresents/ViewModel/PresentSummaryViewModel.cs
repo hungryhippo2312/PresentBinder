@@ -5,7 +5,7 @@ namespace DontForgetThePresents.ViewModel
 {
     public class PresentSummaryViewModel : ViewModelBase
     {
-        private Present _present;
+        private readonly Present _present;
 
         public PresentSummaryViewModel(Present present)
         {

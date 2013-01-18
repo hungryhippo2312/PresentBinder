@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using GalaSoft.MvvmLight;
+﻿using GalaSoft.MvvmLight;
 using DontForgetThePresents.DataAccess;
 using DontForgetThePresents.Models;
 using GalaSoft.MvvmLight.Command;
@@ -15,8 +11,8 @@ namespace DontForgetThePresents.ViewModel
 {
     public class EditableListViewModel : ViewModelBase, IEditableObject
     {
-        private IPresentListRepository _listRepository;
-        private PresentList _list;
+        private readonly IPresentListRepository _listRepository;
+        private readonly PresentList _list;
         private PresentList _originalList;
 
         public RelayCommand SaveCommand { get; private set; }
@@ -37,7 +33,7 @@ namespace DontForgetThePresents.ViewModel
             {
                 _listRepository.Save(_list);
                 EndEdit();
-                Messenger.Default.Send<GoToPreviousViewModel>(new GoToPreviousViewModel());
+                Messenger.Default.Send(new GoToPreviousViewModel());
             }
             catch (RepositoryException)
             {
