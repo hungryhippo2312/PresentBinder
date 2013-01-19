@@ -1,9 +1,11 @@
-﻿using Castle.Facilities.NHibernate;
+﻿using System.Configuration;
+using Castle.Facilities.NHibernate;
 using Castle.Transactions;
 using DontForgetThePresents.Models.ClassMaps;
 using FluentNHibernate.Cfg;
 using FluentNHibernate.Cfg.Db;
 using NHibernate;
+using DontForgetThePresents.Properties;
 
 namespace DontForgetThePresents.Core
 {
@@ -19,12 +21,7 @@ namespace DontForgetThePresents.Core
 
         private IPersistenceConfigurer SetupDatabase()
         {
-            return MsSqlConfiguration.MsSql2008
-                .ConnectionString(c => c
-                    .Server("STU-PC\\SQLEXPRESS")
-                    .Database("PresentBinder")
-                    .Username("PresentBinder")
-                    .Password("This is where all of your great ideas are stored!"));
+            return MsSqlConfiguration.MsSql2008.ConnectionString(ConfigurationManager.ConnectionStrings["local"].ConnectionString);
         }
 
         public Maybe<IInterceptor> Interceptor
