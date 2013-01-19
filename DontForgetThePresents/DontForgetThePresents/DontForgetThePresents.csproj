@@ -61,11 +61,17 @@
     <Reference Include="Castle.Facilities.FactorySupport">
       <HintPath>..\packages\Castle.FactorySupportFacility.3.1.0\lib\net40\Castle.Facilities.FactorySupport.dll</HintPath>
     </Reference>
+    <Reference Include="Castle.Facilities.Logging">
+      <HintPath>..\packages\Castle.LoggingFacility.3.1.0\lib\net40\Castle.Facilities.Logging.dll</HintPath>
+    </Reference>
     <Reference Include="Castle.Facilities.NHibernate">
       <HintPath>..\packages\Castle.Facilities.NHibernate.0.7.1.23602\lib\net40\Castle.Facilities.NHibernate.dll</HintPath>
     </Reference>
     <Reference Include="Castle.IO">
       <HintPath>..\packages\Castle.Transactions.3.1.203.2203\lib\Castle.IO.dll</HintPath>
+    </Reference>
+    <Reference Include="Castle.Services.Logging.NLogIntegration">
+      <HintPath>..\packages\Castle.Core-NLog.3.1.0\lib\net40-client\Castle.Services.Logging.NLogIntegration.dll</HintPath>
     </Reference>
     <Reference Include="Castle.Transactions">
       <HintPath>..\packages\Castle.Transactions.3.2.207.2207\lib\net40\Castle.Transactions.dll</HintPath>
@@ -130,6 +136,7 @@
     <Compile Include="Core\Messenger\HideChildWindowMessage.cs" />
     <Compile Include="Core\Messenger\ShowChildWindowMessage.cs" />
     <Compile Include="Core\SqlStatementInterceptor.cs" />
+    <Compile Include="Core\Windsor\Installers\LoggerInstaller.cs" />
     <Compile Include="DataAccess\IPresentListRepository.cs" />
     <Compile Include="DataAccess\IPresentRepository.cs" />
     <Compile Include="DataAccess\PresentListRepository.cs" />
@@ -233,15 +240,16 @@
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <None Include="app.config" />
+    <None Include="nLog.config">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <SubType>Designer</SubType>
+    </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
     <AppDesigner Include="Properties\" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="MVVMLight.Nuget.Readme.txt" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.0,Profile=Client">

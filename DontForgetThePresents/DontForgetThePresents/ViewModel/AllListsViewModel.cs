@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using Castle.Core.Logging;
 using DontForgetThePresents.Core;
 using DontForgetThePresents.Core.Exceptions;
 using DontForgetThePresents.Core.Messenger;
@@ -21,6 +22,8 @@ namespace DontForgetThePresents.ViewModel
         [UsedImplicitly]
         public RelayCommand ShowPresentsCommand { get; private set; }
 
+        public ILogger Logger { get; set; }
+
         public AllListsViewModel(IPresentListRepository listRepository, IViewModelFactory viewModelFactory)
         {
             _listRepository = listRepository;
@@ -32,6 +35,7 @@ namespace DontForgetThePresents.ViewModel
 
         private void CreateNewList()
         {
+            Logger.Debug("Creating new list.");
             var vm = _viewModelFactory.CreateEditableListViewModel(_listRepository, new PresentList());
             Messenger.Default.Send(new GoToViewModel(vm));
         }
