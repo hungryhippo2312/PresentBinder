@@ -151,6 +151,7 @@
     <Compile Include="ViewModel\ChildWindowViewModels\ChildWindowViewModelBase.cs" />
     <Compile Include="ViewModel\ChildWindowViewModels\ErrorOccurredViewModel.cs" />
     <Compile Include="ViewModel\EditableListViewModel.cs" />
+    <Compile Include="ViewModel\EditablePresentViewModel.cs" />
     <Compile Include="ViewModel\MainWindowViewModel.cs" />
     <Compile Include="ViewModel\PresentListOverviewViewModel.cs" />
     <Compile Include="Core\ViewModelLocator.cs" />
@@ -170,6 +171,9 @@
     </Compile>
     <Compile Include="Views\EditableListView.xaml.cs">
       <DependentUpon>EditableListView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\EditablePresentView.xaml.cs">
+      <DependentUpon>EditablePresentView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\PresentListOverviewView.xaml.cs">
       <DependentUpon>PresentListOverviewView.xaml</DependentUpon>
@@ -193,6 +197,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\EditableListView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\EditablePresentView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

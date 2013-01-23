@@ -31,8 +31,15 @@
                 Grid.Column="1"
                 />
         </Grid>
-        
-        <TextBlock Text="Presents" />
+
+        <Button
+            Content="Edit list"
+            Command="{Binding EditCommand}"
+            />
+
+        <Button
+            Content="Add present"
+            Command="{Binding AddPresentCommand}" />
         
         <ListBox
             ItemsSource="{Binding Presents}"
@@ -58,10 +65,6 @@
             </i:Interaction.Triggers>-->
 
         </ListBox>
-        
-        <Button
-            Content="Edit list"
-            Command="{Binding EditCommand}"
-            />
+
     </StackPanel>
 </UserControl>

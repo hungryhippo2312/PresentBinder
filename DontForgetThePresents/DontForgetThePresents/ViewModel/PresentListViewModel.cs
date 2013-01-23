@@ -18,6 +18,7 @@ namespace DontForgetThePresents.ViewModel
 
         [UsedImplicitly]
         public RelayCommand EditCommand { get; private set; }
+        public RelayCommand AddPresentCommand { get; private set; }
 
         public PresentListViewModel(PresentList presentList, IPresentListRepository listRepository, IViewModelFactory viewModelFactory)
         {
@@ -25,15 +26,22 @@ namespace DontForgetThePresents.ViewModel
             _listRepository = listRepository;
             _viewModelFactory = viewModelFactory;
 
-            EditCommand = new RelayCommand(EditPresent);
+            EditCommand = new RelayCommand(EditList);
+            AddPresentCommand = new RelayCommand(AddPresent);
         }
 
-        private void EditPresent()
+        private void EditList()
         {
             var vm = _viewModelFactory.CreateEditableListViewModel(_listRepository, _presentList);
             Messenger.Default.Send(new GoToViewModel(vm));
         }
-        
+
+        private void AddPresent()
+        {
+            var vm = _viewModelFactory.CreateEditablePresentViewModel(new Present(), _presentList);
+            Messenger.Default.Send(new GoToViewModel(vm));
+        }
+
         [UsedImplicitly]
         public string ListName
         {

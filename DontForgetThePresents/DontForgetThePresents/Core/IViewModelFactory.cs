@@ -19,6 +19,7 @@ namespace DontForgetThePresents.Core
         #region Present view models
 
         PresentSummaryViewModel CreatePresentSummaryViewModel(Present present);
+        EditablePresentViewModel CreateEditablePresentViewModel(Present present, PresentList list);
 
         #endregion
 

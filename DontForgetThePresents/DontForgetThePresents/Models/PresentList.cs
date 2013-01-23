@@ -12,5 +12,11 @@ namespace DontForgetThePresents.Models
         public virtual byte[] Version { get; set; }
 
         public virtual IList<Present> Presents { get; set; }
+
+        public virtual void AddPresent(Present present)
+        {
+            Presents.Add(present);
+            present.List = this;
+        }
     }
 }

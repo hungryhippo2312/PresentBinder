@@ -42,5 +42,9 @@
             <childWindowViews:ErrorOccurredView />
         </DataTemplate>
         
+        <DataTemplate DataType="{x:Type vm:EditablePresentViewModel}">
+            <views:EditablePresentView/>
+        </DataTemplate>
+        
     </Application.Resources>
 </Application>
