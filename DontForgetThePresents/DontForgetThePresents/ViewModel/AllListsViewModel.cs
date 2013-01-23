@@ -1,5 +1,5 @@
-﻿using System.Collections.Generic;
-using System.Collections.ObjectModel;
+﻿using System.Collections.ObjectModel;
+using System.Linq;
 using Castle.Core.Logging;
 using DontForgetThePresents.Core;
 using DontForgetThePresents.Core.Exceptions;
@@ -21,7 +21,7 @@ namespace DontForgetThePresents.ViewModel
         public RelayCommand NewListCommand { get; private set; }
         [UsedImplicitly]
         public RelayCommand ShowPresentsCommand { get; private set; }
-
+        [UsedImplicitly]
         public ILogger Logger { get; set; }
 
         public AllListsViewModel(IPresentListRepository listRepository, IViewModelFactory viewModelFactory)
@@ -48,10 +48,9 @@ namespace DontForgetThePresents.ViewModel
                 var presentListVms = new ObservableCollection<PresentListOverviewViewModel>();
                 try
                 {
-                    IEnumerable<PresentList> presentLists = _listRepository.GetAllLists();
-                    foreach (PresentList pl in presentLists)
+                    var presentLists = _listRepository.GetAllLists();
+                    foreach (var vm in presentLists.Select(pl => _viewModelFactory.CreatePresentListOverviewViewModel(pl)))
                     {
-                        var vm = _viewModelFactory.CreatePresentListOverviewViewModel(pl);
                         presentListVms.Add(vm);
                     }
                 }
@@ -75,18 +74,18 @@ namespace DontForgetThePresents.ViewModel
             }
             set
             {
-                if (_selectedList != value)
+                if (_selectedList == value)
                 {
-                    _selectedList = value;
-                    RaisePropertyChanged("SelectedList");
+                    return;
                 }
+                _selectedList = value;
+                RaisePropertyChanged("SelectedList");
             }
         }
 
         private void ShowPresents()
         {
-            PresentList list = _selectedList.PresentList;
-            PresentListViewModel vm = _viewModelFactory.CreatePresentListViewModel(list);
+            var vm = _viewModelFactory.CreatePresentListViewModel(_selectedList.PresentList);
             Messenger.Default.Send(new GoToViewModel(vm));
         }
     }

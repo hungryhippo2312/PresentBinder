@@ -5,7 +5,6 @@ using DontForgetThePresents.Models.ClassMaps;
 using FluentNHibernate.Cfg;
 using FluentNHibernate.Cfg.Db;
 using NHibernate;
-using DontForgetThePresents.Properties;
 
 namespace DontForgetThePresents.Core
 {
